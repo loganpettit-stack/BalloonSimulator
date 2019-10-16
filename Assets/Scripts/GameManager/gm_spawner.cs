@@ -6,7 +6,7 @@ public class gm_spawner : MonoBehaviour
 
     void Awake()
     {
-       (Instantiate(_balloonPrefabRef) as GameObject).name = "BalloonInstance";
+        Instantiate(_balloonPrefabRef);
     }
 
 }

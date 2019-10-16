@@ -13,6 +13,6 @@ public class gm_uislidehook : MonoBehaviour
     public void resizeBalloon(float scale)
     {
         float newScale = _sizeScaleWeight * scale;
-        _balloonInstanceRef.GetComponent<Transform>().localScale = new Vector3(newScale, newScale, _balloonInstanceRef.GetComponent<Transform>().localScale.z);
+        _balloonInstanceRef.GetComponent<Transform>().localScale = new Vector3(newScale, newScale, newScale);
     }
 }
