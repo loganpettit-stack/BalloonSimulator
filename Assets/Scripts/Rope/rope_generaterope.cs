@@ -17,11 +17,11 @@ public class rope_generaterope : MonoBehaviour
         for (int i = 1; i <= _numSegments; i++)
         {
             GameObject currentLink = Instantiate(_link) as GameObject;
-            HingeJoint joint = currentLink.GetComponent<HingeJoint>();
+            ConfigurableJoint joint = currentLink.GetComponent<ConfigurableJoint>();
             joint.connectedBody = rbprev;
 
             if (i == _numSegments)
-                GameObject.FindGameObjectWithTag("Destination").GetComponent<HingeJoint>().connectedBody = currentLink.GetComponent<Rigidbody>();
+                GameObject.FindGameObjectWithTag("Destination").GetComponent<ConfigurableJoint>().connectedBody = currentLink.GetComponent<Rigidbody>();
             else
                 rbprev = currentLink.GetComponent<Rigidbody>();
         }
