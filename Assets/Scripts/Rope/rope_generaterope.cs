@@ -21,9 +21,13 @@ public class rope_generaterope : MonoBehaviour
             joint.connectedBody = rbprev;
 
             if (i == _numSegments)
+            {
                 GameObject.FindGameObjectWithTag("Destination").GetComponent<ConfigurableJoint>().connectedBody = currentLink.GetComponent<Rigidbody>();
+            }
             else
+            {
                 rbprev = currentLink.GetComponent<Rigidbody>();
+            }
         }
     }
 }
