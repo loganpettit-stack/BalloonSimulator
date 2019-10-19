@@ -1,5 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/* rope_charmer.cs
+ * 11.18.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Removes some of the of the unstable physics properties of the ropes by reducing the collision and interta tensors
+ * 
+ */
+
 using UnityEngine;
 
 public class rope_charmer : MonoBehaviour

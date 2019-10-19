@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/* rope_generaterope.cs
+ * 11.18.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Generates a series of linked hinges using a _link model, creating _numSegments many segments between the source,
+ * the entity this is attached to, and the destination which is tagged as "DESTINATION" under unity tags.
+ */
+
+using UnityEngine;
 
 public class rope_generaterope : MonoBehaviour
 {
