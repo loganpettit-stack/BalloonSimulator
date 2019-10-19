@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2682661028129117726}
   - component: {fileID: 4210905314803522285}
   - component: {fileID: 4552760664875797801}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Balloon
   m_TagString: Balloon
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ PrefabInstance:
     - target: {fileID: -857095006198921626, guid: adaa05cc636b4ab4b92a10c1a6d93faa,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.5512574
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -857095006198921626, guid: adaa05cc636b4ab4b92a10c1a6d93faa,
         type: 3}
@@ -545,7 +545,7 @@ PrefabInstance:
     - target: {fileID: -857095006198921626, guid: adaa05cc636b4ab4b92a10c1a6d93faa,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -857095006198921626, guid: adaa05cc636b4ab4b92a10c1a6d93faa,
         type: 3}
