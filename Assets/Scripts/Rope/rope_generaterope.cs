@@ -10,8 +10,8 @@ using UnityEngine;
 
 public class rope_generaterope : MonoBehaviour
 {
-    public GameObject _link;
-    public int _numSegments;
+    public GameObject _link; //rope link
+    public int _numSegments; //number of segments in the chain of links
 
     void Start()
     {
@@ -20,21 +20,22 @@ public class rope_generaterope : MonoBehaviour
 
     private void GenerateRope()
     {
-        Rigidbody rbprev = this.GetComponent<Rigidbody>();
+        Rigidbody rbprev = this.GetComponent<Rigidbody>(); //the starting point of the chain
 
         for (int i = 1; i <= _numSegments; i++)
         {
-            GameObject currentLink = Instantiate(_link) as GameObject;
-            ConfigurableJoint joint = currentLink.GetComponent<ConfigurableJoint>();
-            joint.connectedBody = rbprev;
+            GameObject currentLink = Instantiate(_link) as GameObject; //Create a new link from the prefab
+            ConfigurableJoint joint = currentLink.GetComponent<ConfigurableJoint>(); //grab the joint from the prefab
+            joint.connectedBody = rbprev; //set the link the new link is connected to, to the body before it
 
             if (i == _numSegments)
             {
+                //we are on the final chain link, so we have to connect the destination to the last link
                 GameObject.FindGameObjectWithTag("Destination").GetComponent<ConfigurableJoint>().connectedBody = currentLink.GetComponent<Rigidbody>();
             }
             else
             {
-                rbprev = currentLink.GetComponent<Rigidbody>();
+                rbprev = currentLink.GetComponent<Rigidbody>(); //Set the last link as the current link so the next iteration can hook onto it
             }
         }
     }

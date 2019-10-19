@@ -13,7 +13,7 @@ public class gm_spawner : MonoBehaviour
 
     void Awake()
     {
-        Instantiate(_balloonPrefabRef);
+        Instantiate(_balloonPrefabRef); //Instantiate the balloon + chain prefab
     }
 
 }
