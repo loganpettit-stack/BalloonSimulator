@@ -1090,8 +1090,8 @@ MonoBehaviour:
   _link: {fileID: 5461044121457438673, guid: df07f812f77435c4aac996f2dfcedad7, type: 3}
   weightHook: {fileID: 390613671}
   target: {fileID: 1984373010}
-  _numSegments: 100
-  displacement: 1
+  _numSegments: 75
+  displacement: 2
 --- !u!1 &1000216011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,7 +1410,7 @@ GameObject:
   - component: {fileID: 1984373012}
   - component: {fileID: 1984373015}
   - component: {fileID: 1984373016}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1425,7 +1425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984373010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.43, y: 4.39, z: 0}
+  m_LocalPosition: {x: 3.18, y: 4.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
