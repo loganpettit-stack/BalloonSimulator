@@ -12,8 +12,10 @@ public class rope_charmer : MonoBehaviour
 {
     void Start()
     {
-        Rigidbody rb = this.GetComponent<Rigidbody>();
-        rb.inertiaTensor = new Vector3(1.0f, 2.0f, 3.0f);
-        rb.inertiaTensorRotation = new Quaternion(0.1f, 0.1f, 0.1f, 0.1f);
+        Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+        rb.centerOfMass = Vector2.zero;
+        rb.inertia = 1.0f;
+        //rb.inertiaTensor = new Vector3(1.0f, 2.0f, 3.0f);
+        //rb.inertiaTensorRotation = new Quaternion(0.1f, 0.1f, 0.1f, 0.1f);
     }
 }
