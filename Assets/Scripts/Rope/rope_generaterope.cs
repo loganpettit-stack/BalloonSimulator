@@ -11,10 +11,10 @@ using UnityEngine;
 public class rope_generaterope : MonoBehaviour
 {
     public GameObject _link; //rope link
-    public Rigidbody2D weightHook;
-    public GameObject target;
+    public Rigidbody2D _weightHook;
+    public GameObject _target;
     public int _numSegments; //number of segments in the chain of links
-    public float displacement;
+    public float _displacement;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class rope_generaterope : MonoBehaviour
 
     private void GenerateRope()
     {
-        Rigidbody2D rbprev = weightHook.GetComponent<Rigidbody2D>(); //the starting point of the chain
+        Rigidbody2D rbprev = _weightHook.GetComponent<Rigidbody2D>(); //the starting point of the chain
 
         for (int i = 1; i <= _numSegments; i++)
         {
@@ -34,11 +34,11 @@ public class rope_generaterope : MonoBehaviour
             if (i == _numSegments)
             {
                 //we are on the final chain link, so we have to connect the destination to the last link
-                HingeJoint2D targetjoint = target.AddComponent<HingeJoint2D>();
+                HingeJoint2D targetjoint = _target.AddComponent<HingeJoint2D>();
                 targetjoint.autoConfigureConnectedAnchor = false;
                 targetjoint.connectedBody = rbprev;
                 targetjoint.anchor = Vector2.zero;
-                targetjoint.connectedAnchor = new Vector2(0f, displacement);
+                targetjoint.connectedAnchor = new Vector2(0f, _displacement);
             }
             else
             {
