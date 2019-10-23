@@ -1,11 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/* rope_charmer.cs
+ * 11.18.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Adds bounds for balloon
+ * 
+ */
+
 using UnityEngine;
 
 public class rope_restrictballmovement : MonoBehaviour
 {
-    public Transform _balloon;
-    public float[] bounds = new float[] {-6.5f, 6.5f, 0f, 6.5f};
+    public Transform _balloon; //Balloon transform reference
+    public float[] bounds = new float[] { -6.5f, 6.5f, 0f, 6.5f }; //Boundingbox for balloon (-x, +x, -y, +y)
 
     // Update is called once per frame
     void Update()
