@@ -9,11 +9,11 @@ using UnityEngine;
 
 public class gm_spawner : MonoBehaviour
 {
-    public GameObject _balloonPrefabRef;
+    //public GameObject _balloonPrefabRef;
 
     void Awake()
     {
-        Instantiate(_balloonPrefabRef); //Instantiate the balloon + chain prefab
+        //Instantiate(_balloonPrefabRef); //Instantiate the balloon + chain prefab
     }
 
 }
