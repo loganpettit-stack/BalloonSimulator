@@ -1,16 +1,1 @@
-{
-    
-    "colorWheel": false,
-    "radiusSlider": true,
-    "windSlider": true,
-    "inflateDeflateButton": true,
-    "recordButton": true,
-    "graph": true,
-    "dataBox": true,
-    "csvExportPath": "/Hello",
-    "imageExportPath": "",
-    "maxRadius": 22,
-    "minRadius": 2,
-    "maxWindSpeed": 5,
-    "minWindSpeed": 1
-}
+{"colorWheel":true,"radiusSlider":true,"windSlider":true,"inflateDeflateButton":true,"recordButton":true,"graph":true,"dataBox":true,"csvExportPath":"/Exports","imageExportPath":"/Exports","minRadius":1,"maxRadius":10,"minWindSpeed":1,"maxWindSpeed":5}
