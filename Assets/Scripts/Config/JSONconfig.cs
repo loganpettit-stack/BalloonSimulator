@@ -1,4 +1,4 @@
-﻿/* JSONconfig.cs
+/* JSONconfig.cs
  * 10.28.2019
  * Balloon Physics Simulator
  * Author: Team NoName
@@ -22,8 +22,8 @@ public class JSONconfig : MonoBehaviour
 {
     string jsonString;
     string filename = "/jsonFile.json";
-    DefaultConfig config = new DefaultConfig();
-    DefaultConfig defaultValues = new DefaultConfig();
+    public DefaultConfig config = new DefaultConfig();
+    public DefaultConfig defaultValues = new DefaultConfig();
 
     // validates property values
     public void Validation(DefaultConfig config)
