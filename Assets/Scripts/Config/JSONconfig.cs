@@ -11,68 +11,88 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine;
 
 [Serializable]
 public class JSONconfig : MonoBehaviour
 {
     string jsonString;
-    string filename = "/jsonFile.json";
-    public DefaultConfig config = new DefaultConfig();
-    public DefaultConfig defaultValues = new DefaultConfig();
+    string filename = "/config.json";
+    public Configuration loadedConfig = new Configuration();
+    public Configuration defaultConfig = new Configuration();
 
     // validates property values
-    public void Validation(DefaultConfig config)
+    public void Validation(Configuration config)
     {
         if (config.minRadius < 1 || config.minRadius >= config.maxRadius)
         {
-            config.minRadius = defaultValues.minRadius;
+            config.minRadius = defaultConfig.minRadius;
         }
         if (config.maxRadius < config.minRadius)
         {
-            config.maxRadius = defaultValues.maxRadius;
+            config.maxRadius = defaultConfig.maxRadius;
         }
         if (config.minWindSpeed < 1 || config.minWindSpeed >= config.maxWindSpeed)
         {
-            config.minWindSpeed = defaultValues.minWindSpeed;
+            config.minWindSpeed = defaultConfig.minWindSpeed;
         }
         if (config.maxWindSpeed < 2 || config.maxWindSpeed <= config.minWindSpeed)
         {
-            config.maxWindSpeed = defaultValues.maxWindSpeed;
+            config.maxWindSpeed = defaultConfig.maxWindSpeed;
         }
 
     }
     void Awake()
     {
-        string path = Application.dataPath + "/Scripts/Config" + filename;
+        string cfgpath = "/Config";
+        string path = Application.dataPath + cfgpath + filename;
         string root = Application.dataPath;
-        if (File.Exists(path) == true)
-        {
-            // reads existing JSON file at path and checks for errors
-            jsonString = File.ReadAllText(path);
-            try
-            {
-                config = JsonUtility.FromJson<DefaultConfig>(jsonString);
-                Validation(config);
-                // check if directory exists and creates directory if it does not exist
-                if (!Directory.Exists(root + config.csvExportPath))
-                {
-                    Directory.CreateDirectory(root + config.csvExportPath);
-                }
-                if (!Directory.Exists(root + config.csvExportPath))
-                {
-                    Directory.CreateDirectory(root + config.imageExportPath);
-                }
 
-            }       
-            catch
+        try
+        {
+
+            if (!Directory.Exists(root + cfgpath))
             {
-                // uses default values for JSON config when error is caught
-                string newJson = defaultValues.SaveToString();
+                Directory.CreateDirectory(root + cfgpath);
+            }
+
+            if (File.Exists(path) == true)
+            {
+                // reads existing JSON file at path and checks for errors
+                jsonString = File.ReadAllText(path);
+                try
+                {
+                    loadedConfig = JsonUtility.FromJson<Configuration>(jsonString);
+                    Validation(loadedConfig);
+                    // check if directory exists and creates directory if it does not exist
+                    if (!Directory.Exists(root + loadedConfig.csvExportPath))
+                    {
+                        Directory.CreateDirectory(root + loadedConfig.csvExportPath);
+                    }
+                    if (!Directory.Exists(root + loadedConfig.csvExportPath))
+                    {
+                        Directory.CreateDirectory(root + loadedConfig.imageExportPath);
+                    }
+                }
+                catch
+                {
+                    // uses default values for JSON config when error is caught
+                    string newJson = defaultConfig.SaveToString();
+                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    {
+                        using (StreamWriter writer = new StreamWriter(fs))
+                        {
+                            writer.Write(newJson);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // creates JSON file if it does not exist at path
+                string newJson = defaultConfig.SaveToString();
                 using (FileStream fs = new FileStream(path, FileMode.Create))
                 {
                     using (StreamWriter writer = new StreamWriter(fs))
@@ -81,26 +101,19 @@ public class JSONconfig : MonoBehaviour
                     }
                 }
             }
-        } else
-        {
-            // creates JSON file if it does not exist at path
-            string newJson = defaultValues.SaveToString();
-            using (FileStream fs = new FileStream(path, FileMode.Create))
-            {
-                using (StreamWriter writer = new StreamWriter(fs))
-                {
-                    writer.Write(newJson);
-                }
-            }          
+            Debug.Log(loadedConfig.minRadius);
+            Debug.Log(loadedConfig.maxRadius);
         }
-        Debug.Log(config.minRadius);
-        Debug.Log(config.maxRadius);
+        catch (Exception e)
+        {
+            loadedConfig = defaultConfig;
+        }
     }
 }
 
 [Serializable]
 // class of properties with default values
-public class DefaultConfig
+public class Configuration
 {
     public bool colorWheel = true;
     public bool radiusSlider = true;
