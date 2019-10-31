@@ -42,7 +42,6 @@ public class JSONconfig : MonoBehaviour
         {
             config.maxWindSpeed = defaultConfig.maxWindSpeed;
         }
-
     }
     void Awake()
     {
@@ -52,7 +51,6 @@ public class JSONconfig : MonoBehaviour
 
         try
         {
-
             if (!Directory.Exists(root + cfgpath))
             {
                 Directory.CreateDirectory(root + cfgpath);
@@ -87,6 +85,8 @@ public class JSONconfig : MonoBehaviour
                             writer.Write(newJson);
                         }
                     }
+                    loadedConfig = defaultConfig;
+                    UnityEditor.AssetDatabase.Refresh();
                 }
             }
             else
@@ -100,18 +100,28 @@ public class JSONconfig : MonoBehaviour
                         writer.Write(newJson);
                     }
                 }
+                loadedConfig = defaultConfig;
+                UnityEditor.AssetDatabase.Refresh();
             }
-            Debug.Log(loadedConfig.minRadius);
-            Debug.Log(loadedConfig.maxRadius);
         }
-        catch (Exception e)
+        catch
         {
+            // creates new JSON file when path does not exist
+            string newJson = defaultConfig.SaveToString();
+            using (FileStream fs = new FileStream(path, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(fs))
+                {
+                    writer.Write(newJson);
+                }
+            }
             loadedConfig = defaultConfig;
+            UnityEditor.AssetDatabase.Refresh();
         }
+        Debug.Log(loadedConfig.SaveToString());
     }
 }
 
-[Serializable]
 // class of properties with default values
 public class Configuration
 {
@@ -125,7 +135,7 @@ public class Configuration
     public string csvExportPath = "/Exports";
     public string imageExportPath = "/Exports";
     public int minRadius = 1;
-    public int maxRadius = 10;
+    public int maxRadius = 100;
     public int minWindSpeed = 1;
     public int maxWindSpeed = 5;
 
