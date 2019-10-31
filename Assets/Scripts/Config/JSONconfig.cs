@@ -21,7 +21,7 @@ public class JSONconfig : MonoBehaviour
 {
     string jsonString;
     string filename = "/jsonFile.json";
-    DefaultConfig config = new DefaultConfig();
+    public DefaultConfig config = new DefaultConfig();
     DefaultConfig defaultValues = new DefaultConfig();
 
     // validates property values
@@ -112,7 +112,7 @@ public class DefaultConfig
     public string imageExportPath = "/Exports";
     public int minRadius = 1;
     public int maxRadius = 10;
-    public int minWindSpeed = 1;
+    public int minWindSpeed = 0;
     public int maxWindSpeed = 5;
 
     // puts properties and values into a string of JSON format
