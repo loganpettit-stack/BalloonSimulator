@@ -6,43 +6,54 @@ using UnityEngine.UI;
 public class balloon_properties : MonoBehaviour
 {
     public Slider slider;
-    public float radius;
+    float gravity = 9.81f;
+    float helium_density = 0.179f;
+    float air_density = 1.29f;
+    float mylar_density = 0.00139f;
+    float mylar_thickness = 0.000016f;
+    float Fb;
+    float lift_force;
+    float Bvolume;
+    float Hvolume;
+    float Whe;
+    float Wbm;
+    float cmToMeters;
+    float value;
+
+    public void Start()
+    {
+        /* get slider value */
+        slider = gm_slidebarhandler.FindObjectOfType<Slider>();
+    }
 
     void Update()
     {
-        radius = slider.value;
-        Debug.Log(balloon_buoyancy(radius));
+       
+        Debug.Log(balloon_buoyancy(slider.value));
     }
 
     public float balloon_buoyancy(float radius)
     {
-        // m/s^2
-        float gravity = 9.8f;
+        /* Inner and outter volume of balloon */
+        Bvolume = Volume(radius);
+        Hvolume = Volume(radius - mylar_thickness);
+        /* weight of mylar and helium */
+        Wbm = mylar_density * (Bvolume - Hvolume);
+        Whe = helium_density * Hvolume;
+        /* buoyant force of balloon */
+        Fb = air_density * Bvolume;
+        /* subtract wieghts of mylar and helium from buoyant force to get actual lift force */
+        lift_force = (Fb - (Whe + Wbm)) * gravity;
 
-        // currently in kg/m^3
-        float helium_density = 0.179f;
-        float air_density = 1.29f;
-        float mylar_density = 0.00139f;
+        return lift_force;
+    }
 
-        // Newton Meters
-        float Fb;
-        float lift;
-
-        float volume;
-
-        // Weight of helium in balloon
-        float Whe;
-
-        // Weight of balloon material
-        float Wbm;
-
-        volume = (4.0f / 3.0f) * Mathf.PI * Mathf.Pow(radius, 3);
-        Whe = helium_density * volume * gravity;
-        Wbm = mylar_density * volume * gravity;
-        Fb = air_density * volume * gravity;
-        lift = Fb - (Whe + Wbm);
-
-        return lift;
+    public float Volume(float radius)
+    {
+        /* convert cm slider value to meters */
+        cmToMeters = radius / 100;
+        value = (4.0f / 3.0f) * Mathf.PI * Mathf.Pow(cmToMeters, 3);
+        return value;
     }
     
 }
