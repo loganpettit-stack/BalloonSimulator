@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class balloon_properties : MonoBehaviour
 {
     public Slider slider;
-    float gravity = 9.81f;
-    float helium_density = 0.179f;
-    float air_density = 1.29f;
-    float mylar_density = 0.00139f;
-    float mylar_thickness = 0.000016f;
-    float Fb;
-    float lift_force;
-    float Bvolume;
-    float Hvolume;
-    float Whe;
-    float Wbm;
-    float cmToMeters;
-    float value;
+    public float gravity = 9.81f;
+    public float helium_density = 0.179f;
+    public float air_density = 1.29f;
+    public float mylar_density = 0.00139f;
+    public float mylar_thickness = 0.000016f;
+    public float Fb;
+    public float lift_force;
+    public float Bvolume;
+    public float Hvolume;
+    public float Whe;
+    public float Wbm;
+    public float cmToMeters;
+    public float value;
 
     public void Start()
     {
@@ -29,7 +29,7 @@ public class balloon_properties : MonoBehaviour
     void Update()
     {
        
-        Debug.Log(balloon_buoyancy(slider.value));
+        //Debug.Log(balloon_buoyancy(slider.value));
     }
 
     public float balloon_buoyancy(float radius)
