@@ -29,7 +29,7 @@ public class balloon_properties : MonoBehaviour
     void Update()
     {
        
-        Debug.Log(balloon_buoyancy(slider.value));
+        //Debug.Log(balloon_buoyancy(slider.value));
     }
 
     public float balloon_buoyancy(float radius)

@@ -29,7 +29,7 @@ public class gm_slidebarhandler : MonoBehaviour
 
     public void RadiusSliderChanged()
     {
-        Debug.Log(_radiusSlider.value);
+        //Debug.Log(_radiusSlider.value);
 
         /*Get slider value and add units, display to screen*/
         string valueWithUnit = _radiusSlider.value + " cm";
