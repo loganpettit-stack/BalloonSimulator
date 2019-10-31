@@ -32,11 +32,11 @@ public class rope_restrictballmovement : MonoBehaviour
         if (_balloonForce.force.x == 0)
         {
             _balloonRigidbody.AddForce((new Vector3(0, _balloon.transform.position.y, _balloon.transform.position.z) - _balloon.transform.position) * _centralForce);
-            _balloon.rotation = Quaternion.Euler(Vector3.Lerp(_balloon.rotation.eulerAngles, Vector3.zero, Time.deltaTime));
+            _balloon.rotation = Quaternion.Lerp(_balloon.rotation, Quaternion.identity, Time.deltaTime);
         }
         else
         {
-            _balloon.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.LerpAngle(_balloon.rotation.z, (180 / Mathf.PI) * Mathf.Asin((transform.position.x - _balloon.position.x) / (Mathf.Sqrt(Mathf.Pow(transform.position.x - _balloon.position.x, 2) + Mathf.Pow(transform.position.y - _balloon.position.y, 2)))), _rotStrength)));
+            _balloon.rotation = Quaternion.Lerp(_balloon.rotation, Quaternion.Euler(0, 0, (180 / Mathf.PI) * Mathf.Asin((transform.position.x - _balloon.position.x) / (Mathf.Sqrt(Mathf.Pow(transform.position.x - _balloon.position.x, 2) + Mathf.Pow(transform.position.y - _balloon.position.y, 2))))), Time.deltaTime);
         }
     }
 }
