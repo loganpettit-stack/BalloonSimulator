@@ -11,10 +11,13 @@ public class gm_slidebarhandler : MonoBehaviour
     public Text _textMax;
     public Text _textMin;
     public JSONconfig _configuration;
-
+    private GameObject _balloon;
+    private Vector3 _targetScale;
+    public float _speed;
 
     public void Start()
     {
+        _balloon = GameObject.Find("ROOT/BALLOON");
         _radiusSlider.maxValue = _configuration.loadedConfig.maxRadius;
         _radiusSlider.minValue = _configuration.loadedConfig.minRadius;
 
@@ -27,6 +30,11 @@ public class gm_slidebarhandler : MonoBehaviour
         _radiusSlider.value = _radiusSlider.minValue;
     }
 
+    public void Update()
+    {
+        _balloon.transform.localScale = Vector3.Lerp(_balloon.transform.localScale, _targetScale, _speed * Time.deltaTime);
+    }
+
     public void RadiusSliderChanged()
     {
         float value = _radiusSlider.value;
@@ -37,9 +45,7 @@ public class gm_slidebarhandler : MonoBehaviour
         /*Get slider value and add units, display to screen*/
         string valueWithUnit = value + " cm";
         _sliderValue.text = valueWithUnit;
-
-        GameObject balloon = GameObject.Find("ROOT/BALLOON");
-        balloon.transform.localScale = new Vector3(radius, radius, (float)0.75);
+        _targetScale = new Vector3(radius, radius, (float)0.75);
     }
 
 }
