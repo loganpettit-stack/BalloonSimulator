@@ -1,1 +1,1 @@
-{"colorWheel":true,"radiusSlider":true,"windSlider":true,"inflateDeflateButton":true,"recordButton":true,"graph":true,"dataBox":true,"csvExportPath":"/Exports","imageExportPath":"/Exports","minRadius":1,"maxRadius":100,"minWindSpeed":1,"maxWindSpeed":5}
+{"colorWheel":true,"radiusSlider":true,"windSlider":true,"inflateDeflateButton":true,"recordButton":true,"graph":true,"dataBox":true,"csvExportPath":"/Exports","imageExportPath":"/Exports","minRadius":50,"maxRadius":400,"minWindSpeed":1,"maxWindSpeed":5}
