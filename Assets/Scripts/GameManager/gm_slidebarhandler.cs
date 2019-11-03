@@ -29,11 +29,17 @@ public class gm_slidebarhandler : MonoBehaviour
 
     public void RadiusSliderChanged()
     {
-        //Debug.Log(_radiusSlider.value);
+        float value = _radiusSlider.value;
+        float radius = value / 100;
+
+        Debug.Log(value);
 
         /*Get slider value and add units, display to screen*/
-        string valueWithUnit = _radiusSlider.value + " cm";
+        string valueWithUnit = value + " cm";
         _sliderValue.text = valueWithUnit;
+
+        GameObject balloon = GameObject.Find("ROOT/BALLOON");
+        balloon.transform.localScale = new Vector3(radius, radius, (float)0.75);
     }
 
 }

@@ -26,7 +26,7 @@ public class JSONconfig : MonoBehaviour
     // validates property values
     public void Validation(Configuration config)
     {
-        if (config.minRadius < 1 || config.minRadius >= config.maxRadius)
+        if (config.minRadius < 50 || config.minRadius >= config.maxRadius)
         {
             config.minRadius = defaultConfig.minRadius;
         }
@@ -134,8 +134,8 @@ public class Configuration
     public bool dataBox = true;
     public string csvExportPath = "/Exports";
     public string imageExportPath = "/Exports";
-    public int minRadius = 1;
-    public int maxRadius = 100;
+    public int minRadius = 50;
+    public int maxRadius = 400;
     public int minWindSpeed = 1;
     public int maxWindSpeed = 5;
 
