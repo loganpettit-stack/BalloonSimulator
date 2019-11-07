@@ -8,11 +8,9 @@
  * area is used to update the databox UI.
  */
 
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 [Serializable]
 public class gm_uiValuesUpdate : MonoBehaviour
@@ -28,7 +26,7 @@ public class gm_uiValuesUpdate : MonoBehaviour
     public float mylar = 0.000016f;
     public float innerRadius;
     public float liftForce;
-    
+
     // radius conversion from centimeters to meters
     public void getRadius(float radius)
     {
