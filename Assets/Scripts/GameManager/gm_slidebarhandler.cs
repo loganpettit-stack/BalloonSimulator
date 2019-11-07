@@ -44,27 +44,9 @@ public class gm_slidebarhandler : MonoBehaviour
         float value = _radiusSlider.value;
         radius = value / 100;
 
-        Debug.Log(value);
-
         /*Get slider value and add units, display to screen*/
         string valueWithUnit = value + " cm";
         _sliderValue.text = valueWithUnit;
         _targetScale = new Vector3(radius, radius, (float)0.75);
     }
-
-    public void RadiusSliderChangedByIncrement()
-    {
-
-        float value = _radiusSlider.value;
-        radius = value / 100;
-
-        Debug.Log(value);
-
-        /*Get slider value and add units, display to screen*/
-        string valueWithUnit = value + " cm";
-        _sliderValue.text = valueWithUnit;
-        _targetScale = new Vector3(radius, radius, (float)0.75);
-    }
-
-
 }

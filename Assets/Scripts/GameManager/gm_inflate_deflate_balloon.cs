@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class gm_inflate_deflate_balloon : MonoBehaviour
@@ -16,8 +14,6 @@ public class gm_inflate_deflate_balloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
-        _balloon = GameObject.Find("ROOT/BALLOON");
         _configuration = _gameManager.GetComponent<JSONconfig>();
         inflateIncrement = _configuration.loadedConfig.inflateIncrement;
         deflateIncrement = _configuration.loadedConfig.deflateIncrement;
@@ -31,7 +27,7 @@ public class gm_inflate_deflate_balloon : MonoBehaviour
         sliderHandler.RadiusSliderChanged();
         uiUpdate.updateUI();
     }
-    
+
     public void decrement()
     {
         _radSlider.value = _radSlider.value - deflateIncrement;

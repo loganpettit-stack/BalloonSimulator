@@ -7,8 +7,6 @@
 *
 */
 
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,16 +40,16 @@ public class Wind : MonoBehaviour
         windSlider = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM/PANEL_WIND/SLIDER_CONTAINER/SLIDER_RADIUS").GetComponent<Slider>();
         windSlider.minValue = 0;
         windSlider.value = 0;
-        
+
 
         windSlider.onValueChanged.AddListener(
              delegate { SetStrength(windSlider.value); }
              );
-        
+
 
         balloon = GameObject.Find("ROOT/BALLOON").GetComponent<Rigidbody2D>();
 
-        startingPosition = balloon.transform.position;  
+        startingPosition = balloon.transform.position;
 
         lowFrequencyNoise = new float[1024];
 
@@ -87,13 +85,13 @@ public class Wind : MonoBehaviour
 
         //add constant wind strength 
         instantaneousStrength *= constantStrength;
-        
+
         //apply the force to the balloon
-        balloon.AddForce(new Vector2(-1,0.1f) * instantaneousStrength);
+        balloon.AddForce(new Vector2(-1, 0.1f) * instantaneousStrength);
 
         //pull of the string gets stronger as the balloon gets further away
         balloon.AddForce((startingPosition -
-                          new Vector2(balloon.transform.position.x, balloon.transform.position.y)) 
+                          new Vector2(balloon.transform.position.x, balloon.transform.position.y))
                           * stringStrength);
     }
 
@@ -108,7 +106,7 @@ public class Wind : MonoBehaviour
         const float e = 2.71828182846f;
         for (int i = 0; i < kernel.Length; i++)
         {
-            float x = (float)(i - (kernel.Length / 2));
+            float x = i - (kernel.Length / 2);
             //formula for normal curve, sum of weights = 1
             kernel[i] =
     (1.0f / (a * Mathf.Sqrt(2 * Mathf.PI))) *
