@@ -62,8 +62,8 @@ public class gm_updatedatbbox : MonoBehaviour
     public void Start()
     {
         _radiusValue = new FieldValue("m");
-        _surfaceareaValue = new FieldValue("m^2");
-        _volumeValue = new FieldValue("m^3");
+        _surfaceareaValue = new FieldValue("m²");
+        _volumeValue = new FieldValue("m³");
         _forceValue = new FieldValue("Nm");
     }
 

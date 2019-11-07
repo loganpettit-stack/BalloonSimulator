@@ -152,7 +152,7 @@ public class Configuration
     // puts properties and values into a string of JSON format
     public string SaveToString()
     {
-        return JsonUtility.ToJson(this);
+        return JsonUtility.ToJson(this, true);
     }
 }
 
