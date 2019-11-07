@@ -34,6 +34,14 @@ public class JSONconfig : MonoBehaviour
         {
             config.maxRadius = defaultConfig.maxRadius;
         }
+        if(config.inflateIncrement < 1 || config.inflateIncrement >= config.maxRadius)
+        {
+            config.inflateIncrement = 1;
+        }
+        if (config.deflateIncrement < 1 || config.deflateIncrement >= config.maxRadius)
+        {
+            config.deflateIncrement = 1;
+        }
         if (config.minWindSpeed < 1 || config.minWindSpeed >= config.maxWindSpeed)
         {
             config.minWindSpeed = defaultConfig.minWindSpeed;
