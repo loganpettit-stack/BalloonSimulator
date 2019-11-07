@@ -138,6 +138,8 @@ public class Configuration
     public int maxRadius = 400;
     public int minWindSpeed = 1;
     public int maxWindSpeed = 5;
+    public int inflateIncrement = 10;
+    public int deflateIncrement = 10;
 
     // puts properties and values into a string of JSON format
     public string SaveToString()
