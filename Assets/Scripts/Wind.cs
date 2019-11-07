@@ -3,8 +3,8 @@
 * 10/22/2019
 * CS 4500 Balloon Simulation
 * This class simulates a realistic wind force on a rigidbody
-* It also provides a static interface to adjust wind strength, pulse, and turbulence.
-*
+* and provides a static interface to adjust wind strength, pulse, and turbulence.
+* It also simulates the force of the string on the balloon
 */
 
 using UnityEngine;
@@ -17,15 +17,19 @@ public class Wind : MonoBehaviour
     static float pulseMagnitude;
     static float pulseFrequency;
     static float instantaneousStrength;
-    Rigidbody2D balloon;
-    Slider windSlider;
-    Vector2 startingPosition;
-    Rigidbody2D anchor;
+    const float maxStringLength = 5f;
+    static Rigidbody2D balloon;
+    static ConstantForce2D constForce;
+    static Slider windSlider;
+    static Vector2 startingPosition;
+    static Rigidbody2D anchor;
+    static Text windText;
 
-    const float stringStrength = 2;
+    const float stringStrength = 8;
 
     //use a generated low-frequency noise to simulate random wind pulse
     float[] lowFrequencyNoise;
+    float forceY;
 
     void Start()
     {
@@ -41,6 +45,9 @@ public class Wind : MonoBehaviour
         windSlider.minValue = 0;
         windSlider.value = 0;
 
+        windText = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM/PANEL_WIND/PANEL_SLIDER_VALUE_HOLDER/TEXT_SELECTED").GetComponent<Text>();
+
+        GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM/PANEL_WIND/SLIDER_CONTAINER/TEXT_SLIDER_MAX").GetComponent<Text>().text = "4 m/s";
 
         windSlider.onValueChanged.AddListener(
              delegate { SetStrength(windSlider.value); }
@@ -49,7 +56,22 @@ public class Wind : MonoBehaviour
 
         balloon = GameObject.Find("ROOT/BALLOON").GetComponent<Rigidbody2D>();
 
+        if (balloon.transform.GetComponent<SpringJoint2D>())
+        {
+            balloon.transform.GetComponent<SpringJoint2D>().enabled = false;
+        }
+
+        anchor = GameObject.Find("ROOT/WEIGHT").GetComponent<Rigidbody2D>();
+        rope_restrictballmovement rope = anchor.GetComponent<rope_restrictballmovement>();
+
+        rope.bounds[0] *= 1.5f;
+        rope.bounds[1] *= 1.5f;
+
+        constForce = balloon.GetComponent<ConstantForce2D>();
+        forceY = constForce.force.y;
+
         startingPosition = balloon.transform.position;
+        startingPosition = new Vector2(0, startingPosition.y);
 
         lowFrequencyNoise = new float[1024];
 
@@ -64,11 +86,20 @@ public class Wind : MonoBehaviour
 
     void Update()
     {
-        constantStrength = windSlider.value;
+
+        string s = constantStrength.ToString();
+
+        if (s.Length > 3)
+            s = s.Substring(0, 3);
+
+        s += " m/s";
+        windText.text = s;
     }
 
     void FixedUpdate()
     {
+        constantStrength = windSlider.value;
+
         //instantaneous turbulence is a random value in (-1,1) * turbulence strength 
         //we also multiply it by the amount of time that has passed for accuracy
         float instantaneousTurbulence = turbulence * 2 * (Random.value - 0.5f) * Time.deltaTime;
@@ -86,13 +117,22 @@ public class Wind : MonoBehaviour
         //add constant wind strength 
         instantaneousStrength *= constantStrength;
 
-        //apply the force to the balloon
-        balloon.AddForce(new Vector2(-1, 0.1f) * instantaneousStrength);
+        //set the wind force 
+        constForce.force = new Vector2((startingPosition.x - balloon.transform.position.x) * stringStrength, constForce.force.y) + (new Vector2(-4, 0f) * instantaneousStrength);
 
-        //pull of the string gets stronger as the balloon gets further away
-        balloon.AddForce((startingPosition -
-                          new Vector2(balloon.transform.position.x, balloon.transform.position.y))
-                          * stringStrength);
+        //distance from the anchor
+        float magnitude = Vector2.Distance(anchor.transform.position, balloon.transform.position);
+
+        //if the balloon gets too high, push it down 
+        float yDown = 0;
+        if (balloon.transform.position.y > maxStringLength && constForce.force.y >= 10)
+            yDown = 1;
+
+        //if the balloon is too far from the anchor, pull it back 
+        if (magnitude > maxStringLength)
+            constForce.force += Mathf.Pow((magnitude - maxStringLength), 2) * -0.025f * new Vector2(1, yDown);
+        else
+            constForce.force = new Vector2(constForce.force.x, forceY);
     }
 
     static void GaussianSmooth(float[] array)
@@ -139,6 +179,13 @@ public class Wind : MonoBehaviour
     public void SetStrength(float v)
     {
         constantStrength = v;
+    }
+
+    public static float WeightForce()
+    {
+        float dist = Vector3.Distance(anchor.transform.position, balloon.transform.position);
+
+        return (dist < maxStringLength * 0.9f) ? 0 : constForce.force.magnitude;
     }
 }
 
