@@ -41,7 +41,7 @@ public class gm_uiValuesUpdate : MonoBehaviour
     public void getVolume(float radius)
     {
         innerRadius = radius - mylar;
-        volume = 4 / 3 * pi * (innerRadius * innerRadius * innerRadius);
+        volume = 4.0f / 3.0f * pi * (innerRadius * innerRadius * innerRadius);
     }
 
     public void updateUI()
