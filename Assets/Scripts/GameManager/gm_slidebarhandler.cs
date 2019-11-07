@@ -14,6 +14,9 @@ public class gm_slidebarhandler : MonoBehaviour
     private GameObject _balloon;
     private Vector3 _targetScale;
     public float _speed;
+    public float radius;
+
+    
 
     public void Start()
     {
@@ -37,8 +40,9 @@ public class gm_slidebarhandler : MonoBehaviour
 
     public void RadiusSliderChanged()
     {
+
         float value = _radiusSlider.value;
-        float radius = value / 100;
+        radius = value / 100;
 
         Debug.Log(value);
 
@@ -47,5 +51,20 @@ public class gm_slidebarhandler : MonoBehaviour
         _sliderValue.text = valueWithUnit;
         _targetScale = new Vector3(radius, radius, (float)0.75);
     }
+
+    public void RadiusSliderChangedByIncrement()
+    {
+
+        float value = _radiusSlider.value;
+        radius = value / 100;
+
+        Debug.Log(value);
+
+        /*Get slider value and add units, display to screen*/
+        string valueWithUnit = value + " cm";
+        _sliderValue.text = valueWithUnit;
+        _targetScale = new Vector3(radius, radius, (float)0.75);
+    }
+
 
 }
