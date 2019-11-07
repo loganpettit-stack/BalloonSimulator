@@ -30,7 +30,7 @@ public class JSONconfig : MonoBehaviour
         {
             config.minRadius = defaultConfig.minRadius;
         }
-        if (config.maxRadius < config.minRadius)
+        if (config.maxRadius < config.minRadius || config.maxRadius > 400)
         {
             config.maxRadius = defaultConfig.maxRadius;
         }
@@ -94,7 +94,6 @@ public class JSONconfig : MonoBehaviour
                         }
                     }
                     loadedConfig = defaultConfig;
-                    UnityEditor.AssetDatabase.Refresh();
                 }
             }
             else
@@ -109,7 +108,6 @@ public class JSONconfig : MonoBehaviour
                     }
                 }
                 loadedConfig = defaultConfig;
-                UnityEditor.AssetDatabase.Refresh();
             }
         }
         catch
@@ -124,7 +122,6 @@ public class JSONconfig : MonoBehaviour
                 }
             }
             loadedConfig = defaultConfig;
-            UnityEditor.AssetDatabase.Refresh();
         }
         Debug.Log(loadedConfig.SaveToString());
     }
