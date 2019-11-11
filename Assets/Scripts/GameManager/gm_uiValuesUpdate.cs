@@ -27,6 +27,11 @@ public class gm_uiValuesUpdate : MonoBehaviour
     public float innerRadius;
     public float liftForce;
 
+    public void Start()
+    {
+        updateUI();
+    }
+
     // radius conversion from centimeters to meters
     public void getRadius(float radius)
     {
