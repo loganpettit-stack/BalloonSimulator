@@ -68,6 +68,7 @@ public class Wind : MonoBehaviour
         rope.bounds[1] *= 1.5f;
 
         constForce = balloon.GetComponent<ConstantForce2D>();
+        constForce.force *= (Vector2.up * 1.2f);
         forceY = constForce.force.y;
 
         startingPosition = balloon.transform.position;
@@ -100,6 +101,8 @@ public class Wind : MonoBehaviour
     {
         constantStrength = windSlider.value;
 
+        balloon.angularVelocity = 0;
+
         //instantaneous turbulence is a random value in (-1,1) * turbulence strength 
         //we also multiply it by the amount of time that has passed for accuracy
         float instantaneousTurbulence = turbulence * 2 * (Random.value - 0.5f) * Time.deltaTime;
@@ -118,7 +121,8 @@ public class Wind : MonoBehaviour
         instantaneousStrength *= constantStrength;
 
         //set the wind force 
-        constForce.force = new Vector2((startingPosition.x - balloon.transform.position.x) * stringStrength, constForce.force.y) + (new Vector2(-4, 0f) * instantaneousStrength);
+        //constForce.force = new Vector2((startingPosition.x - balloon.transform.position.x) * stringStrength, constForce.force.y) + (new Vector2(-4, 0f) * instantaneousStrength);
+        constForce.force = new Vector2(((balloon.transform.localScale.x - 0.8f > 0) ? (balloon.transform.localScale.x - 0.8f) : 0) * (startingPosition.x - balloon.transform.position.x) * stringStrength, constForce.force.y) + (new Vector2(-4, 0f) * instantaneousStrength);
 
         //distance from the anchor
         float magnitude = Vector2.Distance(anchor.transform.position, balloon.transform.position);
@@ -130,9 +134,20 @@ public class Wind : MonoBehaviour
 
         //if the balloon is too far from the anchor, pull it back 
         if (magnitude > maxStringLength)
+        {
             constForce.force += Mathf.Pow((magnitude - maxStringLength), 2) * -0.025f * new Vector2(1, yDown);
+        }
         else
             constForce.force = new Vector2(constForce.force.x, forceY);
+
+        //if its laying on the ground, but its inflated, push it up a bit.
+        if (balloon.transform.position.y < 1 && balloon.transform.localScale.x > 0.5f)
+        {
+            balloon.transform.position += (Vector3.up * Time.deltaTime);
+        }
+
+        constForce.force = new Vector2(constForce.force.x, forceY * balloon.transform.localScale.x);
+
     }
 
     static void GaussianSmooth(float[] array)
