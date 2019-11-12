@@ -1,0 +1,17 @@
+{
+    "colorWheel": false,
+    "radiusSlider": true,
+    "windSlider": true,
+    "inflateDeflateButton": true,
+    "recordButton": true,
+    "graph": true,
+    "dataBox": true,
+    "csvExportPath": "/Exports",
+    "imageExportPath": "/Exports",
+    "minRadius": 50,
+    "maxRadius": 400,
+    "minWindSpeed": 1,
+    "maxWindSpeed": 5,
+    "inflateIncrement": 10,
+    "deflateIncrement": 10
+}
