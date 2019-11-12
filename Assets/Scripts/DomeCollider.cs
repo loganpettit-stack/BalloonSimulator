@@ -10,6 +10,8 @@ public class DomeCollider : MonoBehaviour
     void Start()
     {
         balloon = GameObject.Find("ROOT/BALLOON").transform;
+        if (GetComponent<SpriteRenderer>())
+            GetComponent<SpriteRenderer>().enabled = false;
     }
 
     // Update is called once per frame
