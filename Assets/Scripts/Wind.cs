@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class Wind : MonoBehaviour
 {
-    static float constantStrength;
+    public float constantStrength;
     static float turbulence;
     static float pulseMagnitude;
     static float pulseFrequency;
@@ -196,7 +196,7 @@ public class Wind : MonoBehaviour
         constantStrength = v;
     }
 
-    public static float WeightForce()
+    public float WeightForce()
     {
         float dist = Vector3.Distance(anchor.transform.position, balloon.transform.position);
 
