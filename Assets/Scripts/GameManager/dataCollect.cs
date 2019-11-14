@@ -50,11 +50,11 @@ public class dataCollect : MonoBehaviour
         }
         return csv;
     }
-    private void Update()
-    {
-        collectValues();
-        Debug.Log(getCSVFormat());
-    }
+    //private void Update()
+    //{
+    //    collectValues();
+    //    Debug.Log(getCSVFormat());
+    //}
 
 }
 
