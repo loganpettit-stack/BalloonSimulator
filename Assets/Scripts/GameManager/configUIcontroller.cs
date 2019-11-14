@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*configUIcontroller.cs
+ * 11.14.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Script 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,9 +22,7 @@ public class configUIcontroller : MonoBehaviour
     private bool dataBox;
     //public GameObject colorPanel;
     public GameObject radiusPanel;
-    public GameObject radiusButton;
     public GameObject windPanel;
-    public GameObject windButton;
     public GameObject radiusWindPanel;
     public GameObject sliderPanel;
     public GameObject inflateDeflatePanel;
@@ -34,17 +39,15 @@ public class configUIcontroller : MonoBehaviour
     {
         //colorWheel = GameObject.Find("");
         radiusPanel = GameObject.Find("PANEL_RADIUS");
-        radiusButton = GameObject.Find("BTN_ACTIVATE_RADIUS_PANEL");
         windPanel = GameObject.Find("PANEL_WIND");
-        windButton = GameObject.Find("BTN_ACTIVATE_WIND_PANEL");
-        radiusWindPanel = GameObject.Find("CPANEL_TOP");
-        sliderPanel = GameObject.Find("CPANEL_BOTTOM");
+        radiusWindPanel = GameObject.Find("CPANEL_TOP_R");
+        sliderPanel = GameObject.Find("CPANEL_BOTTOM_R");
         inflateDeflatePanel = GameObject.Find("CPANEL_INFLATE_DEFLATE_BUTTON");
         recordBtn = GameObject.Find("BTN_RECORD");
         magnifyBtn = GameObject.Find("BTN_MAGNIFY");
         graphUI = GameObject.Find("GRAPH");
-        graphPanel = GameObject.Find("CPANEL_BOTTOM");
-        dataPanel = GameObject.Find("CPANEL_TOP");
+        graphPanel = GameObject.Find("CPANEL_BOTTOM_L");
+        dataPanel = GameObject.Find("CPANEL_TOP_L");
         leftPanel = GameObject.Find("CPANEL_LEFT");
         rightPanel = GameObject.Find("CPANEL_RIGHT");
 
@@ -65,75 +68,45 @@ public class configUIcontroller : MonoBehaviour
         //    colorPanel.SetActive(false);
         //}
 
+        // right panel UI control
         if (radiusSlider == true && windSlider == true)
         {
             radiusPanel.SetActive(true);
-            radiusButton.SetActive(true);
             windPanel.SetActive(false);
-            windButton.SetActive(true);
+            radiusWindPanel.SetActive(true);
         }
         else if (radiusSlider == true && windSlider == false)
         {
             radiusPanel.SetActive(true);
             radiusWindPanel.SetActive(false);
-            //radiusButton.SetActive(true);
-            //windPanel.SetActive(false);
-            //windButton.SetActive(false);
+            windPanel.SetActive(false);
         } 
         else if (radiusSlider == false && windSlider == true)
         {
-            //radiusPanel.SetActive(false);
-            //radiusButton.SetActive(false);
+            radiusPanel.SetActive(false);
             windPanel.SetActive(true);
-            //windButton.SetActive(true);
             radiusWindPanel.SetActive(false);
         } 
+        else if (radiusSlider == false && windSlider == false)
+        {
+            rightPanel.SetActive(false);
+        }
+
+        if (inflateDeflateButton == true)
+        {
+            inflateDeflatePanel.SetActive(true);
+        }
         else
         {
-            //radiusPanel.SetActive(false);
-            //radiusButton.SetActive(false);
-            //windPanel.SetActive(false);
-            //windButton.SetActive(false);
-            radiusWindPanel.SetActive(false);
-            sliderPanel.SetActive(false);
+            inflateDeflatePanel.SetActive(false);
         }
 
-        //if (inflateDeflateButton == true)
-        //{
-        //    inflateDeflatePanel.SetActive(true);
-        //} 
-        //else
-        //{
-        //    inflateDeflatePanel.SetActive(false);
-        //}
-
-        if (recordButton == true && magnifyButton == true)
+        // left panel UI control
+        if (graph == true)
         {
             graphPanel.SetActive(true);
-        } else if (recordButton == true && magnifyButton == false)
+        } else
         {
-            graphUI.SetActive(true);
-            recordBtn.SetActive(true);
-            magnifyBtn.SetActive(false);
-        } else if (recordButton == false && magnifyButton == true)
-        {
-            graphUI.SetActive(true);
-            recordBtn.SetActive(false);
-            magnifyBtn.SetActive(true);
-        } else if (recordButton == false && magnifyButton == false)
-        {
-            graphUI.SetActive(true);
-            recordBtn.SetActive(false);
-            magnifyBtn.SetActive(false);
-        }
-
-        if (recordButton == false && magnifyButton == false && graph == false && dataBox == false)
-        {
-            leftPanel.SetActive(false);
-        }
-        if (dataBox == true && recordButton == false && magnifyButton == false)
-        {
-            dataPanel.SetActive(true);
             graphPanel.SetActive(false);
         }
 
@@ -143,7 +116,12 @@ public class configUIcontroller : MonoBehaviour
         }
         else
         {
-            dataPanel.SetActive(true);
+            dataPanel.SetActive(false);
+        }
+
+        if (graph == false && dataBox == false)
+        {
+            leftPanel.SetActive(false);
         }
        
     }

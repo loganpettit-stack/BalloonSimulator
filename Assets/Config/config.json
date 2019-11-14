@@ -1,7 +1,7 @@
 {
     "colorWheel": true,
-    "radiusSlider": false,
-    "windSlider": false,
+    "radiusSlider": true,
+    "windSlider": true,
     "inflateDeflateButton": true,
     "recordButton": true,
     "magnifyButton": true,

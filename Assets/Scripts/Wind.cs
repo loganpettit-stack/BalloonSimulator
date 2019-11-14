@@ -41,13 +41,13 @@ public class Wind : MonoBehaviour
         pulseMagnitude = 8f;
         pulseFrequency = 0.5f;
         turbulence = 10;
-        windSlider = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM/PANEL_WIND/SLIDER_CONTAINER/SLIDER_RADIUS").GetComponent<Slider>();
+        windSlider = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/SLIDER_CONTAINER/SLIDER_RADIUS").GetComponent<Slider>();
         windSlider.minValue = 0;
         windSlider.value = 0;
 
-        windText = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM/PANEL_WIND/PANEL_SLIDER_VALUE_HOLDER/TEXT_SELECTED").GetComponent<Text>();
+        windText = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/PANEL_SLIDER_VALUE_HOLDER/TEXT_SELECTED").GetComponent<Text>();
 
-        GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM/PANEL_WIND/SLIDER_CONTAINER/TEXT_SLIDER_MAX").GetComponent<Text>().text = "4 m/s";
+        GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/SLIDER_CONTAINER/TEXT_SLIDER_MAX").GetComponent<Text>().text = "4 m/s";
 
         windSlider.onValueChanged.AddListener(
              delegate { SetStrength(windSlider.value); }
