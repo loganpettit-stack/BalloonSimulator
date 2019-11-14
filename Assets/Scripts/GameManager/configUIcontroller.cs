@@ -98,14 +98,14 @@ public class configUIcontroller : MonoBehaviour
             sliderPanel.SetActive(false);
         }
 
-        if (inflateDeflateButton == true)
-        {
-            inflateDeflatePanel.SetActive(true);
-        } 
-        else
-        {
-            inflateDeflatePanel.SetActive(false);
-        }
+        //if (inflateDeflateButton == true)
+        //{
+        //    inflateDeflatePanel.SetActive(true);
+        //} 
+        //else
+        //{
+        //    inflateDeflatePanel.SetActive(false);
+        //}
 
         if (recordButton == true && magnifyButton == true)
         {
@@ -137,9 +137,13 @@ public class configUIcontroller : MonoBehaviour
             graphPanel.SetActive(false);
         }
 
-        if (dataBox == false)
+        if (dataBox == true)
         {
-            dataPanel.SetActive(false);
+            dataPanel.SetActive(true);
+        }
+        else
+        {
+            dataPanel.SetActive(true);
         }
        
     }
