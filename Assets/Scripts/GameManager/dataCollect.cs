@@ -80,13 +80,13 @@ public class BalloonData
         this.weightForce = weightForce;
     }
 
-    public float CurrentRadiusM { get => currentRadiusM; set => currentRadiusM = value; }
-    public float SurfaceArea { get => surfaceArea; set => surfaceArea = value; }
-    public float Volume { get => volume; set => volume = value; }
-    public float LiftForce { get => liftForce; set => liftForce = value; }
-    public float Mass { get => mass; set => mass = value; }
-    public float WindSpeed { get => windSpeed; set => windSpeed = value; }
-    public float WeightForce { get => weightForce; set => weightForce = value; }
+    public float CurrentRadiusM { get => currentRadiusM; }
+    public float SurfaceArea { get => surfaceArea; }
+    public float Volume { get => volume; }
+    public float LiftForce { get => liftForce; }
+    public float Mass { get => mass; }
+    public float WindSpeed { get => windSpeed; }
+    public float WeightForce { get => weightForce; }
 }
 
 
