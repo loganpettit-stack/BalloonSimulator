@@ -26,7 +26,7 @@ public class dataCollect : MonoBehaviour
     {
         BalloonData balloonData = new BalloonData(uiValues.currentRadiusM,
             uiValues.surfaceArea, uiValues.volume, uiValues.liftForce, 0,
-            windScript.constantStrength, windScript.WeightForce());
+            Wind.constantStrength, Wind.WeightForce());
         balloonCollection.Add(balloonData);
     }
     public ArrayList getDataSet()
@@ -50,11 +50,11 @@ public class dataCollect : MonoBehaviour
         }
         return csv;
     }
-    //private void Update()
-    //{
-    //    collectValues();
-    //    Debug.Log(getCSVFormat());
-    //}
+    private void Update()
+    {
+        collectValues();
+        Debug.Log(getCSVFormat());
+    }
 
 }
 
