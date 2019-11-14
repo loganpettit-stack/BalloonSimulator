@@ -1,9 +1,10 @@
 {
     "colorWheel": true,
-    "radiusSlider": true,
-    "windSlider": true,
+    "radiusSlider": false,
+    "windSlider": false,
     "inflateDeflateButton": true,
     "recordButton": true,
+    "magnifyButton": true,
     "graph": true,
     "dataBox": true,
     "csvExportPath": "/Exports",

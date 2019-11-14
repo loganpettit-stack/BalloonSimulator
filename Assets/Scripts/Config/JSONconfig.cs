@@ -135,6 +135,7 @@ public class Configuration
     public bool windSlider = true;
     public bool inflateDeflateButton = true;
     public bool recordButton = true;
+    public bool magnifyButton = true;
     public bool graph = true;
     public bool dataBox = true;
     public string csvExportPath = "/Exports";
