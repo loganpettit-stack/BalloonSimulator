@@ -2,7 +2,9 @@
  * 11.14.2019
  * Balloon Physics Simulator
  * Author: Team NoName
- * Description: Script 
+ * Description: This script controls which UI components are enabled or
+ * disabled. It will obtain boolean values from the config object and
+ * set active game objects based on it.
  */
 
 using System.Collections;
@@ -20,6 +22,7 @@ public class configUIcontroller : MonoBehaviour
     private bool magnifyButton;
     private bool graph;
     private bool dataBox;
+    private bool export;
     //public GameObject colorPanel;
     public GameObject radiusPanel;
     public GameObject windPanel;
@@ -33,6 +36,7 @@ public class configUIcontroller : MonoBehaviour
     public GameObject dataPanel;
     public GameObject leftPanel;
     public GameObject rightPanel;
+    //public GameObject exportBtn;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +54,7 @@ public class configUIcontroller : MonoBehaviour
         dataPanel = GameObject.Find("CPANEL_TOP_L");
         leftPanel = GameObject.Find("CPANEL_LEFT");
         rightPanel = GameObject.Find("CPANEL_RIGHT");
+        //exportBtn = GameObject.Find("");
 
         colorWheel = config.loadedConfig.colorWheel;
         radiusSlider = config.loadedConfig.radiusSlider;
@@ -59,7 +64,9 @@ public class configUIcontroller : MonoBehaviour
         magnifyButton = config.loadedConfig.magnifyButton;
         graph = config.loadedConfig.graph;
         dataBox = config.loadedConfig.dataBox;
+        export = config.loadedConfig.export;
 
+        // TODO color wheel
         //if (colorWheel == true)
         //{
         //    colorPanel.SetActive(true);
@@ -105,9 +112,14 @@ public class configUIcontroller : MonoBehaviour
         if (graph == true)
         {
             graphPanel.SetActive(true);
+            recordBtn.SetActive(true);
+            magnifyBtn.SetActive(true);
         } else
         {
             graphPanel.SetActive(false);
+            recordBtn.SetActive(false);
+            magnifyBtn.SetActive(false);
+            // TODO export button
         }
 
         if (dataBox == true)

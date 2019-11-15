@@ -138,6 +138,7 @@ public class Configuration
     public bool magnifyButton = true;
     public bool graph = true;
     public bool dataBox = true;
+    public bool export = true;
     public string csvExportPath = "/Exports";
     public string imageExportPath = "/Exports";
     public int minRadius = 50;

@@ -7,6 +7,7 @@
     "magnifyButton": true,
     "graph": true,
     "dataBox": true,
+    "export": true,
     "csvExportPath": "/Exports",
     "imageExportPath": "/Exports",
     "minRadius": 50,
