@@ -1,5 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/* MagnifyPanel.cs
+ * 11.30.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Enables and disables the magnify context menu
+ */
+
 using UnityEngine;
 
 public class MagnifyPanel : MonoBehaviour

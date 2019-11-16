@@ -1,22 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/* gm_slidebarhandler.cs
+ * 10.28.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Handles slider changes for radius slider and affects balloon
+ * 
+ */
 using UnityEngine;
 using UnityEngine.UI;
 
 public class gm_slidebarhandler : MonoBehaviour
 {
 
-    public Slider _radiusSlider;
-    public Text _sliderValue;
-    public Text _textMax;
-    public Text _textMin;
-    public JSONconfig _configuration;
-    private GameObject _balloon;
+    public Slider _radiusSlider; //slider reference
+    public Text _sliderValue; //text reference
+    public Text _textMax; //text reference 
+    public Text _textMin; //text reference
+    public JSONconfig _configuration; //configuration reference
+    private GameObject _balloon; //balloon object refrence
     private Vector3 _targetScale;
     public float _speed;
-    public float radius;
+    public float _radius;
 
-    
+
 
     public void Start()
     {
@@ -42,11 +47,11 @@ public class gm_slidebarhandler : MonoBehaviour
     {
 
         float value = _radiusSlider.value;
-        radius = value / 100;
+        _radius = value / 100;
 
         /*Get slider value and add units, display to screen*/
         string valueWithUnit = value + " cm";
         _sliderValue.text = valueWithUnit;
-        _targetScale = new Vector3(radius, radius, (float)0.75);
+        _targetScale = new Vector3(_radius, _radius, (float)0.75);
     }
 }

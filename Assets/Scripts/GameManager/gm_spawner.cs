@@ -1,8 +1,9 @@
-﻿/* gm_uislidehook.cs
- * 11.18.2019
+﻿/* gm_spawner.cs
+ * 10.28.2019
  * Balloon Physics Simulator
  * Author: Team NoName
- * Description: Instantiates prefabs at runtime
+ * Description: Deprecated
+ * 
  */
 
 using UnityEngine;

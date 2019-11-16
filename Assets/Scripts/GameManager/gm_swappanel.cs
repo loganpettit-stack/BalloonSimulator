@@ -1,12 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/* gm_swappanel.cs
+ * 10.28.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Swaps panels in betweenn wind and radius panels
+ * 
+ */
+
 using UnityEngine;
-using UnityEngine.UI;
 
 public class gm_swappanel : MonoBehaviour
 {
-    public GameObject _radiusPanelParent;
-    public GameObject _windPanelParent;
+    public GameObject _radiusPanelParent; //radius parent panel
+    public GameObject _windPanelParent; //wind parent panel
 
 
     public void SetRadiusPanelEnabled()

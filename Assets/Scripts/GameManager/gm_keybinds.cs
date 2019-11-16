@@ -1,5 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/* gm_keybinds.cs
+ * 10.28.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Handles keybinds, including game exit
+ * 
+ */
 using UnityEngine;
 
 public class gm_keybinds : MonoBehaviour

@@ -1,19 +1,24 @@
-﻿using System.Collections;
+﻿/* SnapShotManager.cs
+ * 11.30.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Exports screenshots
+ */
+
 using System.IO;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SnapShotManager : MonoBehaviour
 {
-    //    /Exports
-    static int screenShotCounter = 0;
-    public bool capture;
-    Camera graphCamera;
-    string directoryName;
-    RenderTexture tempRT;
-    Text messageText;
-    float messageTimeStamp;
+    // /Exports
+    static int _screenShotCounter = 0;
+    public bool _capture;
+    Camera _graphCamera;
+    string _directoryName;
+    RenderTexture _tempRT;
+    Text _messageText;
+    float _messageTimeStamp;
 
     void Start()
     {
@@ -22,55 +27,55 @@ public class SnapShotManager : MonoBehaviour
         while (Directory.Exists("Exports/ScreenShots" + directoryNumber.ToString()))
             directoryNumber++;
 
-        directoryName = "Exports/ScreenShots" + directoryNumber.ToString();
+        _directoryName = "Exports/ScreenShots" + directoryNumber.ToString();
 
-        Directory.CreateDirectory(directoryName);
+        Directory.CreateDirectory(_directoryName);
 
-        graphCamera = GetComponent<Camera>();
+        _graphCamera = GetComponent<Camera>();
 
-        messageText = GameObject.Find("ROOT/UI/CPANEL_LEFT/CPANEL_BOTTOM/SCREENSHOT_MESSAGE").GetComponent<Text>();
-        messageText.enabled = false;
+        _messageText = GameObject.Find("ROOT/UI/CPANEL_LEFT/CPANEL_BOTTOM/SCREENSHOT_MESSAGE").GetComponent<Text>();
+        _messageText.enabled = false;
     }
 
     void Update()
     {
-        if (Time.timeSinceLevelLoad - messageTimeStamp > 2)
-            messageText.enabled = false;
+        if (Time.timeSinceLevelLoad - _messageTimeStamp > 2)
+            _messageText.enabled = false;
     }
 
-   void LateUpdate()
+    void LateUpdate()
     {
-       if(capture)
-       {
-           int sqr = 1024;
-           capture = false;
-           // the 24 can be 0,16,24, formats like
-           // RenderTextureFormat.Default, ARGB32 etc.
-           tempRT = new RenderTexture(1024, 1024, 24);
-           RenderTexture target = graphCamera.targetTexture;
-           graphCamera.targetTexture = tempRT;
-           graphCamera.Render();
-           RenderTexture.active = tempRT;
-           Texture2D virtualPhoto =
-               new Texture2D(sqr, sqr, TextureFormat.RGB24, false);
-           // false, meaning no need for mipmaps
-           virtualPhoto.ReadPixels(new Rect(0, 0, sqr, sqr), 0, 0);
-           RenderTexture.active = null; //can help avoid errors 
-           graphCamera.targetTexture = target;
-           Destroy(tempRT);
-           byte[] bytes;
-           bytes = virtualPhoto.EncodeToPNG();
-           System.IO.File.WriteAllBytes(
-              directoryName + "/" + screenShotCounter.ToString() + ".png", bytes);
-           messageText.enabled = true;
-           messageText.text = "Graph Saved to " + directoryName + "/" + screenShotCounter.ToString() + ".png";
-           messageTimeStamp = Time.timeSinceLevelLoad;
-           screenShotCounter++;
-       }
+        if (_capture)
+        {
+            int sqr = 1024;
+            _capture = false;
+            // the 24 can be 0,16,24, formats like
+            // RenderTextureFormat.Default, ARGB32 etc.
+            _tempRT = new RenderTexture(1024, 1024, 24);
+            RenderTexture target = _graphCamera.targetTexture;
+            _graphCamera.targetTexture = _tempRT;
+            _graphCamera.Render();
+            RenderTexture.active = _tempRT;
+            Texture2D virtualPhoto =
+                new Texture2D(sqr, sqr, TextureFormat.RGB24, false);
+            // false, meaning no need for mipmaps
+            virtualPhoto.ReadPixels(new Rect(0, 0, sqr, sqr), 0, 0);
+            RenderTexture.active = null; //can help avoid errors 
+            _graphCamera.targetTexture = target;
+            Destroy(_tempRT);
+            byte[] bytes;
+            bytes = virtualPhoto.EncodeToPNG();
+            System.IO.File.WriteAllBytes(
+               _directoryName + "/" + _screenShotCounter.ToString() + ".png", bytes);
+            _messageText.enabled = true;
+            _messageText.text = "Graph Saved to " + _directoryName + "/" + _screenShotCounter.ToString() + ".png";
+            _messageTimeStamp = Time.timeSinceLevelLoad;
+            _screenShotCounter++;
+        }
     }
 
-   public void CreateScreenShot()
+    public void CreateScreenShot()
     {
-        capture = true;
+        _capture = true;
     }
 }
