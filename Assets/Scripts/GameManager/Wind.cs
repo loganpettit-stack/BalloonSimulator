@@ -1,11 +1,11 @@
-﻿/*
-* Jacob Potter
-* 10/22/2019
-* CS 4500 Balloon Simulation
-* This class simulates a realistic wind force on a rigidbody
-* and provides a static interface to adjust wind strength, pulse, and turbulence.
-* It also simulates the force of the string on the balloon
-*/
+﻿/* SnapShotManager.cs
+ * 11.30.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * This class simulates a realistic wind force on a rigidbody
+ * and provides a static interface to adjust wind strength, pulse, and turbulence.
+ * It also simulates the force of the string on the balloon
+ */
 
 using UnityEngine;
 using UnityEngine.UI;

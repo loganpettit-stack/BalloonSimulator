@@ -15,17 +15,17 @@ using UnityEngine.UI;
 [Serializable]
 public class gm_uiValuesUpdate : MonoBehaviour
 {
-    public Slider slider;
-    public gm_updatedatbbox dataBox;
-    public balloon_properties balloon_properties;
-    public float currentRadiusCM;
-    public float currentRadiusM;
-    public float surfaceArea;
-    public float volume;
-    public float pi = 3.1415926535f;
-    public float mylar = 0.000016f;
-    public float innerRadius;
-    public float liftForce;
+    public Slider _slider; //Slider reference
+    public gm_updatedatbbox _dataBox; //script reference 
+    public balloon_properties _balloonProperties; //script reference 
+    public float _currentRadiusCM; 
+    public float _currentRadiusM;
+    public float _surfaceArea;
+    public float _volume;
+    public float _pi = 3.1415926535f;
+    public float _mylar = 0.000016f;
+    public float _innerRadius;
+    public float _liftForce;
 
     public void Start()
     {
@@ -35,31 +35,31 @@ public class gm_uiValuesUpdate : MonoBehaviour
     // radius conversion from centimeters to meters
     public void getRadius(float radius)
     {
-        currentRadiusM = radius / 100;
+        _currentRadiusM = radius / 100;
     }
     // surface area formula
     public void getSurfaceArea(float radius)
     {
-        surfaceArea = 4 * pi * (radius * radius);
+        _surfaceArea = 4 * _pi * (radius * radius);
     }
     // volume formula using inner radius of balloon excluding mylar width
     public void getVolume(float radius)
     {
-        innerRadius = radius - mylar;
-        volume = 4.0f / 3.0f * pi * (innerRadius * innerRadius * innerRadius);
+        _innerRadius = radius - _mylar;
+        _volume = 4.0f / 3.0f * _pi * (_innerRadius * _innerRadius * _innerRadius);
     }
 
     public void updateUI()
     {
-        currentRadiusCM = slider.value;
-        getRadius(currentRadiusCM);
-        getSurfaceArea(currentRadiusM);
-        getVolume(currentRadiusM);
-        liftForce = balloon_properties.balloon_buoyancy(currentRadiusCM);
+        _currentRadiusCM = _slider.value;
+        getRadius(_currentRadiusCM);
+        getSurfaceArea(_currentRadiusM);
+        getVolume(_currentRadiusM);
+        _liftForce = _balloonProperties.BalloonBuoyancy(_currentRadiusCM);
         //Debug.Log(" Radius: " + currentRadiusM + " SA: " + surfaceArea + " Volume: " + volume + "Lift Force: " + liftForce);
-        dataBox.SetRadiusValue(currentRadiusM);
-        dataBox.SetSurfaceAreaValue(surfaceArea);
-        dataBox.SetVolumeValue(volume);
-        dataBox.SetForceValue(liftForce);
+        _dataBox.SetRadiusValue(_currentRadiusM);
+        _dataBox.SetSurfaceAreaValue(_surfaceArea);
+        _dataBox.SetVolumeValue(_volume);
+        _dataBox.SetForceValue(_liftForce);
     }
 }

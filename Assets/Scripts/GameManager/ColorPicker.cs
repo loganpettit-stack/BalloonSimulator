@@ -1,39 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/* ColorPicker.cs
+ * 10.28.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Script smoothly follows the balloon with an offset and buffer
+ * 
+ */
 using UnityEngine;
 
 public class ColorPicker : MonoBehaviour
 {
-    Renderer balloon;
-    public Vector3 worldPos;
+    Renderer _balloon; //Balloon renderer
+    public Vector3 _worldPos; //Position of color picker in world
 
-    // Start is called before the first frame update
     void Start()
     {
-        balloon = GameObject.Find("ROOT/BALLOON").GetComponent<Renderer>();
-        
+        _balloon = GameObject.Find("ROOT/BALLOON").GetComponent<Renderer>(); //pick up the renderer off the balloon
     }
 
 
     void OnGUI()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(worldPos.x * Screen.width, worldPos.y * Screen.height, 10)) + Vector3.forward * -2f;
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(_worldPos.x * Screen.width, _worldPos.y * Screen.height, 10)) + Vector3.forward * -2f; //center the color picker
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) //on left click
         {
-            RaycastHit raycastHit;
+            RaycastHit raycastHit; //raycast reference
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //perform raycasst
 
             if (Physics.Raycast(ray, out raycastHit))
             {
-                if (raycastHit.collider.transform == transform)
+                if (raycastHit.collider.transform == transform) //make sure we hit the right collider / object
                 {
                     Renderer renderer = raycastHit.collider.GetComponent<MeshRenderer>();
                     Texture2D texture2D = renderer.material.mainTexture as Texture2D;
@@ -44,7 +45,7 @@ public class ColorPicker : MonoBehaviour
                     Vector2 tiling = renderer.material.mainTextureScale;
                     Color color = texture2D.GetPixel(Mathf.FloorToInt(pCoord.x * tiling.x), Mathf.FloorToInt(pCoord.y * tiling.y));
 
-                    balloon.material.color = color;
+                    _balloon.material.color = color;
                 }
             }
         }

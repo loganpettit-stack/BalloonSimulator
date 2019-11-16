@@ -1,59 +1,65 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/* balloon_properties.cs
+ * 10.28.2019
+ * Balloon Physics Simulator
+ * Author: Team NoName
+ * Description: Defines properties of the balloon and contains some of the calculations needed for operations
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 
 public class balloon_properties : MonoBehaviour
 {
-    public Slider slider;
-    float gravity = 9.81f;
-    float helium_density = 0.179f;
-    float air_density = 1.29f;
-    float mylar_density = 0.00139f;
-    float mylar_thickness = 0.000016f;
-    float Fb;
-    float lift_force;
-    float Bvolume;
-    float Hvolume;
-    float Whe;
-    float Wbm;
-    float cmToMeters;
-    float value;
+    public Slider _slider;
+    float _gravity = 9.81f;
+    float _helium_density = 0.179f;
+    float _air_density = 1.29f;
+    float _mylar_density = 0.00139f;
+    float _mylar_thickness = 0.000016f;
+    float _Fb;
+    float _lift_force;
+    float _Bvolume;
+    float _Hvolume;
+    float _Whe;
+    float _Wbm;
+    float _cmToMeters;
+    float _value;
 
     public void Start()
     {
         /* get slider value */
-        slider = gm_slidebarhandler.FindObjectOfType<Slider>();
+        _slider = gm_slidebarhandler.FindObjectOfType<Slider>();
     }
 
     void Update()
     {
-       
+
         //Debug.Log(balloon_buoyancy(slider.value));
     }
 
-    public float balloon_buoyancy(float radius)
+    public float BalloonBuoyancy(float radius)
     {
         /* Inner and outter volume of balloon */
-        Bvolume = Volume(radius);
-        Hvolume = Volume(radius - mylar_thickness);
+        _Bvolume = Volume(radius);
+        _Hvolume = Volume(radius - _mylar_thickness);
         /* weight of mylar and helium */
-        Wbm = mylar_density * (Bvolume - Hvolume);
-        Whe = helium_density * Hvolume;
+        _Wbm = _mylar_density * (_Bvolume - _Hvolume);
+        _Whe = _helium_density * _Hvolume;
         /* buoyant force of balloon */
-        Fb = air_density * Bvolume;
+        _Fb = _air_density * _Bvolume;
         /* subtract wieghts of mylar and helium from buoyant force to get actual lift force */
-        lift_force = (Fb - (Whe + Wbm)) * gravity;
+        _lift_force = (_Fb - (_Whe + _Wbm)) * _gravity;
 
-        return lift_force;
+        return _lift_force;
     }
 
     public float Volume(float radius)
     {
         /* convert cm slider value to meters */
-        cmToMeters = radius / 100;
-        value = (4.0f / 3.0f) * Mathf.PI * Mathf.Pow(cmToMeters, 3);
-        return value;
+        _cmToMeters = radius / 100;
+        _value = (4.0f / 3.0f) * Mathf.PI * Mathf.Pow(_cmToMeters, 3);
+        return _value;
     }
-    
+
 }

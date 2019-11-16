@@ -1,8 +1,9 @@
 ﻿/* gm_uislidehook.cs
- * 11.18.2019
+ * 10.28.2019
  * Balloon Physics Simulator
  * Author: Team NoName
- * Description: Creates a slide hook for the slider to use. Will probably not be used after real controls are implemented
+ * Description: Old, deprecated legacy code
+ * 
  */
 
 using System;

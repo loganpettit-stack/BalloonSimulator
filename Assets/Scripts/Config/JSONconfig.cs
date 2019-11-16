@@ -34,7 +34,7 @@ public class JSONconfig : MonoBehaviour
         {
             config.maxRadius = defaultConfig.maxRadius;
         }
-        if(config.inflateIncrement < 1 || config.inflateIncrement >= config.maxRadius)
+        if (config.inflateIncrement < 1 || config.inflateIncrement >= config.maxRadius)
         {
             config.inflateIncrement = 1;
         }
