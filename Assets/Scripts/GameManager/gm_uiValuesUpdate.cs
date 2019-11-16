@@ -16,6 +16,7 @@ using UnityEngine.UI;
 public class gm_uiValuesUpdate : MonoBehaviour
 {
     public Slider slider;
+    public GameObject _balloon;
     public gm_updatedatbbox dataBox;
     public balloon_properties balloon_properties;
     public float currentRadiusCM;
@@ -26,6 +27,7 @@ public class gm_uiValuesUpdate : MonoBehaviour
     public float mylar = 0.000016f;
     public float innerRadius;
     public float liftForce;
+    public float mylar_mass;
 
     public void Start()
     {
@@ -56,6 +58,8 @@ public class gm_uiValuesUpdate : MonoBehaviour
         getSurfaceArea(currentRadiusM);
         getVolume(currentRadiusM);
         liftForce = balloon_properties.balloon_buoyancy(currentRadiusCM);
+        mylar_mass = balloon_properties._Mylar_Mass(currentRadiusCM);
+        //_balloon.GetComponent<Rigidbody2D>().mass = mylar_mass;
         //Debug.Log(" Radius: " + currentRadiusM + " SA: " + surfaceArea + " Volume: " + volume + "Lift Force: " + liftForce);
         dataBox.SetRadiusValue(currentRadiusM);
         dataBox.SetSurfaceAreaValue(surfaceArea);

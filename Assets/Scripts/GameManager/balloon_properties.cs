@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*balloon_properties.cs
+ * 11.18.2019
+ * Balloon Physics simulator
+ * Author: Team NoName
+ * Description: Calculate lift force, volume, and mylar mass to be used by other scripts
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,18 +25,6 @@ public class balloon_properties : MonoBehaviour
     float Wbm;
     float cmToMeters;
     float value;
-
-    public void Start()
-    {
-        /* get slider value */
-        slider = gm_slidebarhandler.FindObjectOfType<Slider>();
-    }
-
-    void Update()
-    {
-       
-        //Debug.Log(balloon_buoyancy(slider.value));
-    }
 
     public float balloon_buoyancy(float radius)
     {
@@ -54,6 +48,16 @@ public class balloon_properties : MonoBehaviour
         cmToMeters = radius / 100;
         value = (4.0f / 3.0f) * Mathf.PI * Mathf.Pow(cmToMeters, 3);
         return value;
+    }
+
+    public float _Mylar_Mass(float radius)
+    {
+        float Surface_Area;
+        float Mylar_Mass;
+
+        Surface_Area = 4.0f * Mathf.PI * Mathf.Pow(radius, 2);
+        Mylar_Mass = Surface_Area * mylar_thickness * mylar_density * 50;
+        return Mylar_Mass;
     }
     
 }
