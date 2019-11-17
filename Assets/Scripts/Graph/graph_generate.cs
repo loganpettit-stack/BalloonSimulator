@@ -8,8 +8,11 @@ public class graph_generate : MonoBehaviour
         _ANCHOR_BL, 
         _ANCHOR_BR;
 
-    public Dropdown _dropdownX, 
+    public Dropdown _dropdownX,
         _dropdownY;
+
+    public GameObject _graphTarget, 
+        _datapointPrefab;
 
     private float BOUND_L, 
         BOUND_T,
@@ -32,6 +35,10 @@ public class graph_generate : MonoBehaviour
 
     public void RegenGraph()
     {
+        int X_AXIS = _dropdownX.value;
+        int Y_AXIS = _dropdownY.value;
+
+
 
     }
 }
