@@ -58,12 +58,23 @@ public class gm_uiValuesUpdate : MonoBehaviour
         getSurfaceArea(currentRadiusM);
         getVolume(currentRadiusM);
         liftForce = balloon_properties.balloon_buoyancy(currentRadiusCM);
-        mylar_mass = balloon_properties._Mylar_Mass(currentRadiusCM);
-        //_balloon.GetComponent<Rigidbody2D>().mass = mylar_mass;
         //Debug.Log(" Radius: " + currentRadiusM + " SA: " + surfaceArea + " Volume: " + volume + "Lift Force: " + liftForce);
         dataBox.SetRadiusValue(currentRadiusM);
         dataBox.SetSurfaceAreaValue(surfaceArea);
         dataBox.SetVolumeValue(volume);
         dataBox.SetForceValue(liftForce);
+       
+        //mass of balloon stays at 1 until the threshold of 0.15 kg is passed
+        //to smooth inflation and deflation movement.
+        mylar_mass = balloon_properties._Mylar_Mass(currentRadiusCM);
+        if(mylar_mass < 0.15)
+        {
+            _balloon.GetComponent<Rigidbody2D>().mass = 1;
+        }
+        else
+        {
+            _balloon.GetComponent<Rigidbody2D>().mass = mylar_mass;
+        }
+
     }
 }
