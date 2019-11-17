@@ -61,15 +61,19 @@ public class graph_generate : MonoBehaviour
                 Y_MAX = itemData[Y_AXIS];
         }
 
-        float GRAPH_SCALE_X = X_MAX / BOUND_WIDTH;
-        float GRAPH_SCALE_Y = Y_MAX / BOUND_HEIGHT;
+        float GRAPH_SCALE_X = BOUND_WIDTH / X_MAX;
+        float GRAPH_SCALE_Y = BOUND_HEIGHT / Y_MAX;
+
+        Debug.Log(string.Format("Scales {0} {1}", GRAPH_SCALE_X, GRAPH_SCALE_Y));
 
         foreach (BalloonData item in values)
         {
             float[] itemData = item.GetDataArray();
             GameObject point = Instantiate(_datapointPrefab) as GameObject;
             point.transform.parent = _graphTarget.transform;
-            point.transform.localPosition = new Vector3(.3f, itemData[Y_AXIS] * GRAPH_SCALE_Y, itemData[X_AXIS] * GRAPH_SCALE_X);
+            point.transform.localPosition = new Vector3(.3f, itemData[Y_AXIS] * GRAPH_SCALE_Y, itemData[X_AXIS] * GRAPH_SCALE_X * -1);
+
+            Debug.Log("Creating new datapoint at " + point.transform.localPosition);
         }
 
     }
