@@ -27,6 +27,9 @@ public class gm_uiValuesUpdate : MonoBehaviour
     public float _innerRadius;
     public float _liftForce;
 
+    /// <summary>
+    /// Updates UI to make sure databoxes are correct to the initial value of radius
+    /// </summary>
     public void Start()
     {
         updateUI();
@@ -49,6 +52,9 @@ public class gm_uiValuesUpdate : MonoBehaviour
         _volume = 4.0f / 3.0f * _pi * (_innerRadius * _innerRadius * _innerRadius);
     }
 
+    /// <summary>
+    /// Calls utility functons to caluclate new surface area, volume, etc. and updates UI elements in DataBox
+    /// </summary>
     public void updateUI()
     {
         _currentRadiusCM = _slider.value;

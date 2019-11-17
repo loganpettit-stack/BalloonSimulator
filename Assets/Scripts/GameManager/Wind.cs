@@ -31,6 +31,9 @@ public class Wind : MonoBehaviour
     float[] lowFrequencyNoise;
     float forceY;
 
+    /// <summary>
+    /// Setup, grab components
+    /// </summary>
     void Start()
     {
         //JSONconfig config = GameObject.Find("ROOT/GAMEMANAGER").GetComponent<JSONconfig>();
@@ -85,6 +88,9 @@ public class Wind : MonoBehaviour
         GaussianSmooth(lowFrequencyNoise);
     }
 
+    /// <summary>
+    /// Update UI regarding wind strength slider
+    /// </summary>
     void Update()
     {
 
@@ -97,6 +103,9 @@ public class Wind : MonoBehaviour
         windText.text = s;
     }
 
+    /// <summary>
+    /// Perform wind simulation and calculations
+    /// </summary>
     void FixedUpdate()
     {
         constantStrength = windSlider.value;
@@ -150,6 +159,10 @@ public class Wind : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Performs gaussian smoothing on dataset
+    /// </summary>
+    /// <param name="array"></param>
     static void GaussianSmooth(float[] array)
     {
         float[] kernel = new float[17];
@@ -191,11 +204,19 @@ public class Wind : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Sets constant straight of wind
+    /// </summary>
+    /// <param name="v"></param>
     public void SetStrength(float v)
     {
         constantStrength = v;
     }
 
+    /// <summary>
+    /// Calculates the force on the weight with the upwards helium force plus the amount of force exerted sideways.
+    /// </summary>
+    /// <returns></returns>
     public static float WeightForce()
     {
         float dist = Vector3.Distance(anchor.transform.position, balloon.transform.position);

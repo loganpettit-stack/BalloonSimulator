@@ -15,11 +15,18 @@ public class gm_uislidehook : MonoBehaviour
     public float _sizeScaleWeight = 1.0f;
     private GameObject _balloonInstanceRef;
 
+    /// <summary>
+    /// Grabs reference to balloon
+    /// </summary>
     void Start()
     {
         _balloonInstanceRef = GameObject.FindGameObjectWithTag("Balloon");
     }
 
+    /// <summary>
+    /// deprecated, not used
+    /// </summary>
+    /// <param name="scale"></param>
     public void resizeBalloon(float scale)
     {
         float newScale = _sizeScaleWeight * scale;

@@ -20,6 +20,9 @@ public class SnapShotManager : MonoBehaviour
     Text _messageText;
     float _messageTimeStamp;
 
+    /// <summary>
+    /// Grabs directory, finds first nonexistant directory
+    /// </summary>
     void Start()
     {
         int directoryNumber = 0;
@@ -37,12 +40,18 @@ public class SnapShotManager : MonoBehaviour
         _messageText.enabled = false;
     }
 
+    /// <summary>
+    /// Hides text message of screenshot saved after 2 seconds
+    /// </summary>
     void Update()
     {
         if (Time.timeSinceLevelLoad - _messageTimeStamp > 2)
             _messageText.enabled = false;
     }
 
+    /// <summary>
+    /// Captures screenshot using render textures
+    /// </summary>
     void LateUpdate()
     {
         if (_capture)

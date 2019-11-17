@@ -9,6 +9,9 @@ using UnityEngine;
 
 public class gm_keybinds : MonoBehaviour
 {
+    /// <summary>
+    /// Checks for keys being pressed down
+    /// </summary>
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

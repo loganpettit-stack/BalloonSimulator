@@ -18,7 +18,9 @@ public class gm_inflate_deflate_balloon : MonoBehaviour
     public GameObject _gameManager; //gamemanager reference
     public Slider _radSlider; //slider reference
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Grabs configurations and script references
+    /// </summary>
     void Start()
     {
         _configuration = _gameManager.GetComponent<JSONconfig>();
@@ -28,6 +30,9 @@ public class gm_inflate_deflate_balloon : MonoBehaviour
         _uiUpdate = _gameManager.GetComponent<gm_uiValuesUpdate>();
     }
 
+    /// <summary>
+    /// Increment radus slider value, called by increase button
+    /// </summary>
     public void increment()
     {
         _radSlider.value = _radSlider.value + _inflateIncrement;
@@ -35,6 +40,9 @@ public class gm_inflate_deflate_balloon : MonoBehaviour
         _uiUpdate.updateUI();
     }
 
+    /// <summary>
+    /// Decrement radius slider value called by decrease button
+    /// </summary>
     public void decrement()
     {
         _radSlider.value = _radSlider.value - _deflateIncrement;
