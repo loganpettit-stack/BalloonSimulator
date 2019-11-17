@@ -26,30 +26,29 @@ public class balloon_properties : MonoBehaviour
     float cmToMeters;
     float value;
 
+    /*Calculating lift force of balloon*/
     public float balloon_buoyancy(float radius)
     {
-        /* Inner and outter volume of balloon */
         Bvolume = Volume(radius);
         Hvolume = Volume(radius - mylar_thickness);
-        /* weight of mylar and helium */
         Wbm = mylar_density * (Bvolume - Hvolume);
         Whe = helium_density * Hvolume;
-        /* buoyant force of balloon */
         Fb = air_density * Bvolume;
-        /* subtract wieghts of mylar and helium from buoyant force to get actual lift force */
         lift_force = (Fb - (Whe + Wbm)) * gravity;
 
         return lift_force;
     }
 
+    /*Seperate Volume function for easy use in other scripts*/
     public float Volume(float radius)
     {
-        /* convert cm slider value to meters */
         cmToMeters = radius / 100;
         value = (4.0f / 3.0f) * Mathf.PI * Mathf.Pow(cmToMeters, 3);
         return value;
     }
 
+    /* Mylar Mass calculated seperately to apply on balloon Rigidbody 2D
+     * for realistic physics simulation*/
     public float _Mylar_Mass(float radius)
     {
         float Surface_Area;
