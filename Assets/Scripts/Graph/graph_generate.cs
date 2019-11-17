@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class graph_generate : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class graph_generate : MonoBehaviour
         _ANCHOR_TR, 
         _ANCHOR_BL, 
         _ANCHOR_BR;
+
+    public Dropdown _dropdownX, 
+        _dropdownY;
 
     private float BOUND_L, 
         BOUND_T,
