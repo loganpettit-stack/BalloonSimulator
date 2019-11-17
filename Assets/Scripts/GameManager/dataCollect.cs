@@ -48,6 +48,7 @@ public class dataCollect : MonoBehaviour
         }
         return csv;
     }
+
     //private void Update()
     //{
     //    collectValues();
@@ -75,6 +76,10 @@ public class BalloonData
         this.liftForce = liftForce;
         this.mass = mass;
         this.windSpeed = windSpeed;
+        if (this.windSpeed == 0.00f)
+        {
+            this.windSpeed = 0.01f;
+        }
         this.weightForce = weightForce;
     }
 
