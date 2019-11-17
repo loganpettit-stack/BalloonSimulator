@@ -45,7 +45,7 @@ public class dataCollect : MonoBehaviour
             csv += obj.Volume.ToString("0.00") + ",";
             csv += obj.LiftForce.ToString("0.00") + ",";
             csv += obj.Mass.ToString("0.00") + ",";
-            csv += obj.WindSpeed.ToString("0.0") + ",";
+            csv += obj.WindSpeed.ToString("0.00") + ",";
             csv += obj.WeightForce.ToString("0.00") + "\n";
         }
         return csv;
@@ -67,7 +67,7 @@ public class BalloonData
     private float volume;
     private float liftForce;
     private float mass;
-    public float windSpeed;
+    private float windSpeed;
     private float weightForce;
 
     public BalloonData(float currentRadiusM, float surfaceArea, float volume, float liftForce, float mass, float windSpeed, float weightForce)
@@ -78,9 +78,9 @@ public class BalloonData
         this.liftForce = liftForce;
         this.mass = mass;
         this.windSpeed = windSpeed;
-        if (this.windSpeed == 0.0f)
+        if (this.windSpeed == 0.00f)
         {
-            this.windSpeed = 0.1f;
+            this.windSpeed = 0.01f;
         }
         this.weightForce = weightForce;
     }
