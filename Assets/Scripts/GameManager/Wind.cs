@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class Wind : MonoBehaviour
 {
-    static float constantStrength;
+    public static float constantStrength;
     static float turbulence;
     static float pulseMagnitude;
     static float pulseFrequency;
