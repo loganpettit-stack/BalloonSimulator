@@ -28,6 +28,7 @@ public class dataCollect : MonoBehaviour
             Wind.constantStrength, Wind.WeightForce());
         balloonCollection.Add(balloonData);
     }
+
     public ArrayList getDataSet()
     {
         return balloonCollection;
@@ -86,6 +87,11 @@ public class BalloonData
     public float Mass { get => mass; }
     public float WindSpeed { get => windSpeed; }
     public float WeightForce { get => weightForce; }
+
+    public float[] GetDataArray()
+    {
+        return new float[] { currentRadiusM, surfaceArea, volume, liftForce, mass, windSpeed, weightForce };
+    }
 }
 
 

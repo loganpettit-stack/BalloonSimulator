@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class graph_generate : MonoBehaviour
@@ -13,6 +14,8 @@ public class graph_generate : MonoBehaviour
 
     public GameObject _graphTarget, 
         _datapointPrefab;
+
+    public dataCollect _dataSource;
 
     private float BOUND_L, 
         BOUND_T,
@@ -35,10 +38,39 @@ public class graph_generate : MonoBehaviour
 
     public void RegenGraph()
     {
+        int _children = _graphTarget.transform.childCount;
+        for (int i = _children - 1; i > 0; i--)
+        {
+            Destroy(_graphTarget.transform.GetChild(i).gameObject);
+        }
+
         int X_AXIS = _dropdownX.value;
         int Y_AXIS = _dropdownY.value;
 
+        ArrayList values = _dataSource.getDataSet();
 
+        float X_MAX = 0;
+        float Y_MAX = 0;
+
+        foreach (BalloonData item in values)
+        {
+            float[] itemData = item.GetDataArray();
+            if (itemData[X_AXIS] > X_MAX)
+                X_MAX = itemData[X_AXIS];
+            if (itemData[Y_AXIS] > Y_MAX)
+                Y_MAX = itemData[Y_AXIS];
+        }
+
+        float GRAPH_SCALE_X = X_MAX / BOUND_WIDTH;
+        float GRAPH_SCALE_Y = Y_MAX / BOUND_HEIGHT;
+
+        foreach (BalloonData item in values)
+        {
+            float[] itemData = item.GetDataArray();
+            GameObject point = Instantiate(_datapointPrefab) as GameObject;
+            point.transform.parent = _graphTarget.transform;
+            point.transform.localPosition = new Vector3(.3f, itemData[Y_AXIS] * GRAPH_SCALE_Y, itemData[X_AXIS] * GRAPH_SCALE_X);
+        }
 
     }
 }
