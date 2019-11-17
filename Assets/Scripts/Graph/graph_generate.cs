@@ -55,6 +55,9 @@ public class graph_generate : MonoBehaviour
         RegenGraph();
     }
 
+    /// <summary>
+    /// Generate markers for the graph
+    /// </summary>
     private void GenerateMarkers()
     {
         float MARKER_Y_INC = BOUND_HEIGHT / 10.0f;
