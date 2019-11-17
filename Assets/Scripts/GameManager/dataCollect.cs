@@ -10,9 +10,7 @@
  */
 
 using System.Collections;
-using System.Globalization;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class dataCollect : MonoBehaviour
 {
@@ -38,7 +36,7 @@ public class dataCollect : MonoBehaviour
     {
         string csv = "Radius, Surface Area, Volume, Lift Force, Mass, Wind Speed, Weight Force\n";
 
-        foreach(BalloonData obj in getDataSet())
+        foreach (BalloonData obj in getDataSet())
         {
             csv += obj.CurrentRadiusM.ToString("0.00") + ",";
             csv += obj.SurfaceArea.ToString("0.00") + ",";
