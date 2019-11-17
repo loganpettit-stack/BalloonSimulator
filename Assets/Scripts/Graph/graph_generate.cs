@@ -76,6 +76,7 @@ public class graph_generate : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// Refreshes graph when called
     /// </summary>
