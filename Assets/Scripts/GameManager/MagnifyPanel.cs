@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class MagnifyPanel : MonoBehaviour
 {
+    public GameObject _colorPicker;
+
     /// <summary>
     /// Hides the magnify pane by default
     /// </summary>
@@ -23,5 +25,6 @@ public class MagnifyPanel : MonoBehaviour
     public void ToggleActive()
     {
         gameObject.SetActive(!gameObject.activeSelf);
+        _colorPicker.SetActive(!gameObject.activeSelf);
     }
 }
