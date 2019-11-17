@@ -22,7 +22,9 @@ public class gm_slidebarhandler : MonoBehaviour
     public float _radius;
 
 
-
+    /// <summary>
+    /// Grab configs and prepare values for display
+    /// </summary>
     public void Start()
     {
         _balloon = GameObject.Find("ROOT/BALLOON");
@@ -38,11 +40,17 @@ public class gm_slidebarhandler : MonoBehaviour
         _radiusSlider.value = _radiusSlider.minValue;
     }
 
+    /// <summary>
+    /// Smoothly scale balloon up and down based on radius
+    /// </summary>
     public void Update()
     {
         _balloon.transform.localScale = Vector3.Lerp(_balloon.transform.localScale, _targetScale, _speed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Called on radius slider changed, calls utility functions to update balloon scale
+    /// </summary>
     public void RadiusSliderChanged()
     {
 

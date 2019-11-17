@@ -12,12 +12,17 @@ public class ColorPicker : MonoBehaviour
     Renderer _balloon; //Balloon renderer
     public Vector3 _worldPos; //Position of color picker in world
 
+    /// <summary>
+    /// Grabs balloon gameobject
+    /// </summary>
     void Start()
     {
         _balloon = GameObject.Find("ROOT/BALLOON").GetComponent<Renderer>(); //pick up the renderer off the balloon
     }
 
-
+    /// <summary>
+    /// moves color pallete along with the camera in a certain screenspace position
+    /// </summary>
     void OnGUI()
     {
         transform.position = Camera.main.ScreenToWorldPoint(new Vector3(_worldPos.x * Screen.width, _worldPos.y * Screen.height, 10)) + Vector3.forward * -2f; //center the color picker

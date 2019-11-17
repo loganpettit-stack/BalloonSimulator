@@ -12,6 +12,9 @@ public class camera_smoothfollow : MonoBehaviour
 {
     public Transform _target; //Target of camera follow, 
 
+    /// <summary>
+    /// Moves the camera smoothly if camera exceeds certain X distance from the balloon
+    /// </summary>
     public void Update() 
     {
         if (Mathf.Abs(_target.position.x) < 4.75f) //Buffer zone

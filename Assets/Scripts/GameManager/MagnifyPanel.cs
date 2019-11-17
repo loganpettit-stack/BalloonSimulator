@@ -9,11 +9,17 @@ using UnityEngine;
 
 public class MagnifyPanel : MonoBehaviour
 {
+    /// <summary>
+    /// Hides the magnify pane by default
+    /// </summary>
     void Start()
     {
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Switches magnify panel between on and off as a toggle switch
+    /// </summary>
     public void ToggleActive()
     {
         gameObject.SetActive(!gameObject.activeSelf);

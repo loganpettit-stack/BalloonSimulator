@@ -13,13 +13,18 @@ public class gm_swappanel : MonoBehaviour
     public GameObject _radiusPanelParent; //radius parent panel
     public GameObject _windPanelParent; //wind parent panel
 
-
+    /// <summary>
+    /// Enables radius panel, hides wind panel
+    /// </summary>
     public void SetRadiusPanelEnabled()
     {
         _radiusPanelParent.SetActive(true);
         _windPanelParent.SetActive(false);
     }
 
+    /// <summary>
+    /// Enables wind panel, hides radius panel
+    /// </summary>
     public void SetWindPanelEnabled()
     {
         _radiusPanelParent.SetActive(false);

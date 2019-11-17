@@ -26,18 +26,29 @@ public class balloon_properties : MonoBehaviour
     float _cmToMeters;
     float _value;
 
+    /// <summary>
+    /// Grabs slider instace
+    /// </summary>
     public void Start()
     {
         /* get slider value */
         _slider = gm_slidebarhandler.FindObjectOfType<Slider>();
     }
 
+    /// <summary>
+    /// Unused
+    /// </summary>
     void Update()
     {
 
         //Debug.Log(balloon_buoyancy(slider.value));
     }
 
+    /// <summary>
+    /// Calculates balloon lift force
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <returns></returns>
     public float BalloonBuoyancy(float radius)
     {
         /* Inner and outter volume of balloon */
@@ -53,7 +64,11 @@ public class balloon_properties : MonoBehaviour
 
         return _lift_force;
     }
-
+    /// <summary>
+    /// Calculates balloon radius
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <returns></returns>
     public float Volume(float radius)
     {
         /* convert cm slider value to meters */

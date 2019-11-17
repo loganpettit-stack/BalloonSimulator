@@ -51,6 +51,10 @@ public class JSONconfig : MonoBehaviour
             config.maxWindSpeed = defaultConfig.maxWindSpeed;
         }
     }
+
+    /// <summary>
+    /// Creates and or generates config if does not exist and pulls in values if possible. Otherwise, creates a new file
+    /// </summary>
     void Awake()
     {
         string cfgpath = "/Config";
