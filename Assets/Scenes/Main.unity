@@ -3179,8 +3179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec93089800791b344b85e90759cab9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 458183974}
   _radiusPanelParent: {fileID: 1542748869}
   _windPanelParent: {fileID: 1445884487}
+  _radiusSliderUI: {fileID: 584905607}
+  _inflateDeflatePanel: {fileID: 1233856830}
 --- !u!114 &458183973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3318,6 +3321,7 @@ MonoBehaviour:
   radiusPanel: {fileID: 1542748869}
   windPanel: {fileID: 1445884487}
   radiusWindPanel: {fileID: 1415552517}
+  radiusSliderUI: {fileID: 584905607}
   sliderPanel: {fileID: 1995670417}
   inflateDeflatePanel: {fileID: 1233856830}
   recordBtn: {fileID: 1639589251}
@@ -6990,7 +6994,7 @@ GameObject:
   - component: {fileID: 895483170}
   - component: {fileID: 895483171}
   m_Layer: 5
-  m_Name: SLIDER_RADIUS
+  m_Name: SLIDER_WIND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

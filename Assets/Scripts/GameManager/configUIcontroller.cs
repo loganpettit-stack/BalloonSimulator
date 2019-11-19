@@ -27,6 +27,7 @@ public class configUIcontroller : MonoBehaviour
     public GameObject radiusPanel;
     public GameObject windPanel;
     public GameObject radiusWindPanel;
+    public GameObject radiusSliderUI;
     public GameObject sliderPanel;
     public GameObject inflateDeflatePanel;
     public GameObject recordBtn;
@@ -45,6 +46,7 @@ public class configUIcontroller : MonoBehaviour
         radiusPanel = GameObject.Find("PANEL_RADIUS");
         windPanel = GameObject.Find("PANEL_WIND");
         radiusWindPanel = GameObject.Find("CPANEL_TOP_R");
+        radiusSliderUI = GameObject.Find("SLIDER_RADIUS");
         sliderPanel = GameObject.Find("CPANEL_BOTTOM_R");
         inflateDeflatePanel = GameObject.Find("CPANEL_INFLATE_DEFLATE_BUTTON");
         exportBtn = GameObject.Find("BTN_EXPORT");
@@ -77,35 +79,65 @@ public class configUIcontroller : MonoBehaviour
         // right panel UI control
         if (radiusSlider == true && windSlider == true) // manages radius slider, wind slider, and respective switches
         {
-            radiusPanel.SetActive(true);
+            radiusSliderUI.SetActive(true);
             windPanel.SetActive(false);
             radiusWindPanel.SetActive(true);
+
+            if (inflateDeflateButton == true)
+            {
+                inflateDeflatePanel.SetActive(true);
+            } 
+            else if (inflateDeflateButton == false)
+            {
+                inflateDeflatePanel.SetActive(false);
+            }
         }
         else if (radiusSlider == true && windSlider == false)
         {
-            radiusPanel.SetActive(true);
-            radiusWindPanel.SetActive(false);
-            windPanel.SetActive(false);
+            if (inflateDeflateButton == true)
+            {
+                radiusSliderUI.SetActive(true);
+                inflateDeflatePanel.SetActive(true);
+                radiusWindPanel.SetActive(false);
+                windPanel.SetActive(false);
+            }
+            else
+            {
+                radiusSliderUI.SetActive(true);
+                inflateDeflatePanel.SetActive(false);
+                radiusWindPanel.SetActive(false);
+                windPanel.SetActive(false);
+            }
         } 
         else if (radiusSlider == false && windSlider == true)
         {
-            radiusPanel.SetActive(false);
-            windPanel.SetActive(true);
-            radiusWindPanel.SetActive(false);
+            if (inflateDeflateButton == true)
+            {
+                radiusSliderUI.SetActive(false);
+                inflateDeflatePanel.SetActive(true);
+                radiusWindPanel.SetActive(true);
+                windPanel.SetActive(false);
+            }
+            else
+            {
+                radiusPanel.SetActive(false);
+                radiusWindPanel.SetActive(false);
+                windPanel.SetActive(true);
+            }
         } 
         else if (radiusSlider == false && windSlider == false)
         {
-            rightPanel.SetActive(false);
-        }
-
-        // enables/disables inflate and deflate buttons
-        if (inflateDeflateButton == true)
-        {
-            inflateDeflatePanel.SetActive(true);
-        }
-        else
-        {
-            inflateDeflatePanel.SetActive(false);
+            if (inflateDeflateButton == true)
+            {
+                radiusSliderUI.SetActive(false);
+                inflateDeflatePanel.SetActive(true);
+                radiusWindPanel.SetActive(false);
+                windPanel.SetActive(false);
+            }
+            else
+            {
+                rightPanel.SetActive(false);
+            }
         }
 
         // left panel UI control

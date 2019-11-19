@@ -44,7 +44,7 @@ public class Wind : MonoBehaviour
         pulseMagnitude = 8f;
         pulseFrequency = 0.5f;
         turbulence = 10;
-        windSlider = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/SLIDER_CONTAINER/SLIDER_RADIUS").GetComponent<Slider>();
+        windSlider = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/SLIDER_CONTAINER/SLIDER_WIND").GetComponent<Slider>();
         windSlider.minValue = 0;
         windSlider.value = 0;
 
