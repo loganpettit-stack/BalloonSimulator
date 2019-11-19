@@ -18,6 +18,7 @@ public class gm_uiValuesUpdate : MonoBehaviour
     public Slider _slider; //Slider reference
     public gm_updatedatbbox _dataBox; //script reference 
     public balloon_properties _balloonProperties; //script reference 
+    public GameObject _balloon;
     public float _currentRadiusCM; 
     public float _currentRadiusM;
     public float _surfaceArea;
@@ -26,6 +27,7 @@ public class gm_uiValuesUpdate : MonoBehaviour
     public float _mylar = 0.000016f;
     public float _innerRadius;
     public float _liftForce;
+    public float _mylar_mass;
 
     /// <summary>
     /// Updates UI to make sure databoxes are correct to the initial value of radius
@@ -62,10 +64,22 @@ public class gm_uiValuesUpdate : MonoBehaviour
         getSurfaceArea(_currentRadiusM);
         getVolume(_currentRadiusM);
         _liftForce = _balloonProperties.BalloonBuoyancy(_currentRadiusCM);
+        _mylar_mass = _balloonProperties._Mylar_Mass(_currentRadiusCM);
         //Debug.Log(" Radius: " + currentRadiusM + " SA: " + surfaceArea + " Volume: " + volume + "Lift Force: " + liftForce);
         _dataBox.SetRadiusValue(_currentRadiusM);
         _dataBox.SetSurfaceAreaValue(_surfaceArea);
         _dataBox.SetVolumeValue(_volume);
         _dataBox.SetForceValue(_liftForce);
+
+        /*Set 0.15kg threshold for linear raising lowering motion of balloon*/
+        if(_mylar_mass < 0.15f)
+        {
+            _balloon.GetComponent<Rigidbody2D>().mass = 1;
+        }
+        else
+        {
+            _balloon.GetComponent<Rigidbody2D>().mass = _mylar_mass;
+        }
+
     }
 }
