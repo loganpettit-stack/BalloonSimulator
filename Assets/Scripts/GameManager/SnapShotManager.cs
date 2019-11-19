@@ -36,7 +36,7 @@ public class SnapShotManager : MonoBehaviour
 
         _graphCamera = GetComponent<Camera>();
 
-        _messageText = GameObject.Find("ROOT/UI/CPANEL_LEFT/CPANEL_BOTTOM/SCREENSHOT_MESSAGE").GetComponent<Text>();
+        _messageText = GameObject.Find("ROOT/UI/CPANEL_LEFT/CPANEL_BOTTOM_L/SCREENSHOT_MESSAGE").GetComponent<Text>();
         _messageText.enabled = false;
     }
 
