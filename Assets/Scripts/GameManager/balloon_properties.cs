@@ -26,55 +26,35 @@ public class balloon_properties : MonoBehaviour
     float _cmToMeters;
     float _value;
 
-    /// <summary>
-    /// Grabs slider instace
-    /// </summary>
-    public void Start()
-    {
-        /* get slider value */
-        _slider = gm_slidebarhandler.FindObjectOfType<Slider>();
-    }
-
-    /// <summary>
-    /// Unused
-    /// </summary>
-    void Update()
-    {
-
-        //Debug.Log(balloon_buoyancy(slider.value));
-    }
-
-    /// <summary>
-    /// Calculates balloon lift force
-    /// </summary>
-    /// <param name="radius"></param>
-    /// <returns></returns>
+    /*Calculate force of lift balloon has*/
     public float BalloonBuoyancy(float radius)
     {
-        /* Inner and outter volume of balloon */
         _Bvolume = Volume(radius);
         _Hvolume = Volume(radius - _mylar_thickness);
-        /* weight of mylar and helium */
         _Wbm = _mylar_density * (_Bvolume - _Hvolume);
         _Whe = _helium_density * _Hvolume;
-        /* buoyant force of balloon */
         _Fb = _air_density * _Bvolume;
-        /* subtract wieghts of mylar and helium from buoyant force to get actual lift force */
         _lift_force = (_Fb - (_Whe + _Wbm)) * _gravity;
 
         return _lift_force;
     }
-    /// <summary>
-    /// Calculates balloon radius
-    /// </summary>
-    /// <param name="radius"></param>
-    /// <returns></returns>
+    /*Separated Volume so that other scripts can pull in calculation*/
     public float Volume(float radius)
     {
-        /* convert cm slider value to meters */
         _cmToMeters = radius / 100;
         _value = (4.0f / 3.0f) * Mathf.PI * Mathf.Pow(_cmToMeters, 3);
         return _value;
+    }
+
+    /*Function to calculate mass of mylar, weight multiplied by 50 
+     * for realistic physics with Unity engine */
+    public float _Mylar_Mass(float radius)
+    {
+        float Surface_Area;
+        float Mylar_Mass;
+        Surface_Area = 4.0f * Mathf.PI * Mathf.Pow(radius, 2);
+        Mylar_Mass = Surface_Area * _mylar_thickness * _mylar_density * 50;
+        return Mylar_Mass;
     }
 
 }
