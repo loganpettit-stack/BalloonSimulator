@@ -232,6 +232,7 @@ public class Wind : MonoBehaviour
         float dist = Vector3.Distance(anchor.transform.position, balloon.transform.position);
 
         return (dist < maxStringLength * 0.9f) ? 0 : constForce.force.magnitude;
+
     }
 }
 
