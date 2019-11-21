@@ -19,6 +19,9 @@ public class dataCollect : MonoBehaviour
     private ArrayList balloonCollection = new ArrayList();
     // balloon object
 
+    /// <summary>
+    /// Collects data into a BalloonData object and adds to list of other data points
+    /// </summary>
     public void collectValues()
     {
         BalloonData balloonData = new BalloonData(uiValues._currentRadiusM,
@@ -27,11 +30,19 @@ public class dataCollect : MonoBehaviour
         balloonCollection.Add(balloonData);
     }
 
+    /// <summary>
+    /// Returns the data set stored in this class
+    /// </summary>
+    /// <returns></returns>
     public ArrayList getDataSet()
     {
         return balloonCollection;
     }
 
+    /// <summary>
+    /// Returns a CSV formatted string for output
+    /// </summary>
+    /// <returns></returns>
     public string getCSVFormat()
     {
         string csv = "Radius, Surface Area, Volume, Lift Force, Mass, Wind Speed, Weight Force\n";
@@ -48,13 +59,6 @@ public class dataCollect : MonoBehaviour
         }
         return csv;
     }
-
-    //private void Update()
-    //{
-    //    collectValues();
-    //    Debug.Log(getCSVFormat());
-    //}
-
 }
 
 // class of balloon properties
