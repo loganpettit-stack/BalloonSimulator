@@ -42,7 +42,7 @@ public class CSVexport : MonoBehaviour
             outStream.WriteLine(test);
             outStream.Flush();
             outStream.Close();
-            //Debug.Log("it worked");
+            Debug.Log("it worked");
        }
     }
     
