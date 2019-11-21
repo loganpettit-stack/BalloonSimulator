@@ -32,7 +32,7 @@ public class SnapShotManager : MonoBehaviour
         exportBasePath = _configuration.loadedConfig.imageExportPath;
 
 
-        while (Directory.Exists(exportBasePath + "/ScreenShots" + directoryNumber.ToString()))
+        while (Directory.Exists( exportBasePath + "/ScreenShots" + directoryNumber.ToString()))
             directoryNumber++;
 
 
