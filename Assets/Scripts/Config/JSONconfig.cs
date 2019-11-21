@@ -38,11 +38,11 @@ public class JSONconfig : MonoBehaviour
         }
         if (config.inflateIncrement < 1 || config.inflateIncrement >= config.maxRadius)
         {
-            config.inflateIncrement = 1;
+            config.inflateIncrement = defaultConfig.inflateIncrement;
         }
         if (config.deflateIncrement < 1 || config.deflateIncrement >= config.maxRadius)
         {
-            config.deflateIncrement = 1;
+            config.deflateIncrement = defaultConfig.deflateIncrement;
         }
         if (config.maxWindSpeed < 2 || config.maxWindSpeed <= config.minWindSpeed)
         {
