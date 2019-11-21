@@ -1,4 +1,4 @@
-﻿/* SnapShotManager.cs
+/* SnapShotManager.cs
  * 11.30.2019
  * Balloon Physics Simulator
  * Author: Team NoName
@@ -24,6 +24,8 @@ public class Wind : MonoBehaviour
     static Vector2 startingPosition;
     static Rigidbody2D anchor;
     static Text windText;
+    static gm_uiValuesUpdate prop;
+    public static bool StringTaught;
     public JSONconfig _configuration; //configuration reference
     public Text _textMax; //text reference 
     public Text _textMin; //text reference
@@ -76,6 +78,8 @@ public class Wind : MonoBehaviour
 
         anchor = GameObject.Find("ROOT/WEIGHT").GetComponent<Rigidbody2D>();
         rope_restrictballmovement rope = anchor.GetComponent<rope_restrictballmovement>();
+
+        prop = GameObject.Find("ROOT/GAMEMANAGER").GetComponent<gm_uiValuesUpdate>();
 
         rope.bounds[0] *= 1.5f;
         rope.bounds[1] *= 1.5f;
@@ -230,9 +234,11 @@ public class Wind : MonoBehaviour
     public static float WeightForce()
     {
         float dist = Vector3.Distance(anchor.transform.position, balloon.transform.position);
+        StringTaught = (dist > maxStringLength * 0.8f);
 
-        return (dist < maxStringLength * 0.9f) ? 0 : constForce.force.magnitude;
+        return (dist < maxStringLength * 0.8f) ? 0 : constForce.force.magnitude + prop._liftForce;
 
     }
 }
+
 

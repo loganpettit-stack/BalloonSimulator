@@ -19,24 +19,28 @@ public class SnapShotManager : MonoBehaviour
     RenderTexture _tempRT;
     Text _messageText;
     float _messageTimeStamp;
-    string exportBasePath;
-    public JSONconfig _configuration; //configuration reference
+
     /// <summary>
     /// Grabs directory, finds first nonexistant directory
     /// </summary>
     void Start()
     {
-        
+        JSONconfig config = GameObject.Find("ROOT/GAMEMANAGER").GetComponent<JSONconfig>();
+        string dir = "Exports";
+
+        if (config.loadedConfig != null)
+            dir = config.loadedConfig.imageExportPath;
+
         int directoryNumber = 0;
 
-        exportBasePath = _configuration.loadedConfig.imageExportPath;
 
+        if (!Directory.Exists(dir))
+            Directory.CreateDirectory(dir);
 
-        while (Directory.Exists(exportBasePath + "/ScreenShots" + directoryNumber.ToString()))
+        while (Directory.Exists(dir + "/ScreenShots" + directoryNumber.ToString()))
             directoryNumber++;
 
-
-        _directoryName = exportBasePath + "/ScreenShots" + directoryNumber.ToString();
+        _directoryName = dir + "/ScreenShots" + directoryNumber.ToString();
 
         Directory.CreateDirectory(_directoryName);
 
@@ -91,6 +95,7 @@ public class SnapShotManager : MonoBehaviour
 
     public void CreateScreenShot()
     {
+        GameObject.Find("ROOT/GAMEMANAGER").GetComponent<CSVexport>().Save();
         _capture = true;
     }
 }
