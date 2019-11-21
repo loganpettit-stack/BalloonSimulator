@@ -8,9 +8,9 @@
     "dataBox": true,
     "csvExportPath": "/Exports",
     "imageExportPath": "/Exports",
-    "minRadius": 50,
+    "minRadius": 39,
     "maxRadius": 400,
-    "minWindSpeed": 1,
+    "minWindSpeed": 0,
     "maxWindSpeed": 5,
     "inflateIncrement": 10,
     "deflateIncrement": 10

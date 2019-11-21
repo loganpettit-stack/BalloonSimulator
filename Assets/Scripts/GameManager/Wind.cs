@@ -24,6 +24,9 @@ public class Wind : MonoBehaviour
     static Vector2 startingPosition;
     static Rigidbody2D anchor;
     static Text windText;
+    public JSONconfig _configuration; //configuration reference
+    public Text _textMax; //text reference 
+    public Text _textMin; //text reference
 
     const float stringStrength = 8;
 
@@ -45,12 +48,19 @@ public class Wind : MonoBehaviour
         pulseFrequency = 0.5f;
         turbulence = 10;
         windSlider = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/SLIDER_CONTAINER/SLIDER_WIND").GetComponent<Slider>();
-        windSlider.minValue = 0;
-        windSlider.value = 0;
+        windSlider.minValue = _configuration.loadedConfig.minWindSpeed;
+        windSlider.maxValue = _configuration.loadedConfig.maxWindSpeed;
+        windSlider.value = _configuration.loadedConfig.minWindSpeed;
+
+        string minString = windSlider.minValue.ToString() + " m/s";
+        string maxString = windSlider.maxValue.ToString() + " m/s";
+
+        _textMin.text = minString;
+        _textMax.text = maxString;
 
         windText = GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/PANEL_SLIDER_VALUE_HOLDER/TEXT_SELECTED").GetComponent<Text>();
 
-        GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/SLIDER_CONTAINER/TEXT_SLIDER_MAX").GetComponent<Text>().text = "4 m/s";
+        GameObject.Find("ROOT/UI/CPANEL_RIGHT/CPANEL_BOTTOM_R/PANEL_WIND/SLIDER_CONTAINER/TEXT_SLIDER_MAX").GetComponent<Text>().text = maxString;
 
         windSlider.onValueChanged.AddListener(
              delegate { SetStrength(windSlider.value); }

@@ -145,7 +145,7 @@ public class Configuration
     public string imageExportPath = "/Exports";
     public int minRadius = 50;
     public int maxRadius = 400;
-    public int minWindSpeed = 1;
+    public int minWindSpeed = 0;
     public int maxWindSpeed = 5;
     public int inflateIncrement = 10;
     public int deflateIncrement = 10;
