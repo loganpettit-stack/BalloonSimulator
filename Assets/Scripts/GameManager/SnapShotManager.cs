@@ -19,18 +19,24 @@ public class SnapShotManager : MonoBehaviour
     RenderTexture _tempRT;
     Text _messageText;
     float _messageTimeStamp;
-
+    string exportBasePath;
+    public JSONconfig _configuration; //configuration reference
     /// <summary>
     /// Grabs directory, finds first nonexistant directory
     /// </summary>
     void Start()
     {
+        
         int directoryNumber = 0;
 
-        while (Directory.Exists("Exports/ScreenShots" + directoryNumber.ToString()))
+        exportBasePath = _configuration.loadedConfig.imageExportPath;
+
+
+        while (Directory.Exists(exportBasePath + "/ScreenShots" + directoryNumber.ToString()))
             directoryNumber++;
 
-        _directoryName = "Exports/ScreenShots" + directoryNumber.ToString();
+
+        _directoryName = exportBasePath + "/ScreenShots" + directoryNumber.ToString();
 
         Directory.CreateDirectory(_directoryName);
 
