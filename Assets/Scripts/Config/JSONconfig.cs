@@ -29,10 +29,12 @@ public class JSONconfig : MonoBehaviour
         if (config.minRadius < 50 || config.minRadius >= config.maxRadius)
         {
             config.minRadius = defaultConfig.minRadius;
+            config.maxRadius = defaultConfig.maxRadius;
         }
         if (config.maxRadius < config.minRadius || config.maxRadius > 400)
         {
             config.maxRadius = defaultConfig.maxRadius;
+            config.minRadius = defaultConfig.minRadius;
         }
         if (config.inflateIncrement < 1 || config.inflateIncrement >= config.maxRadius)
         {
@@ -42,14 +44,17 @@ public class JSONconfig : MonoBehaviour
         {
             config.deflateIncrement = 1;
         }
-        if (config.minWindSpeed < 1 || config.minWindSpeed >= config.maxWindSpeed)
-        {
-            config.minWindSpeed = defaultConfig.minWindSpeed;
-        }
         if (config.maxWindSpeed < 2 || config.maxWindSpeed <= config.minWindSpeed)
         {
             config.maxWindSpeed = defaultConfig.maxWindSpeed;
+            config.minWindSpeed = defaultConfig.minWindSpeed;
         }
+        if (config.minWindSpeed < 1 || config.minWindSpeed >= config.maxWindSpeed)
+        {
+            config.minWindSpeed = defaultConfig.minWindSpeed;
+            config.maxWindSpeed = defaultConfig.maxWindSpeed;
+        }
+      
     }
 
     /// <summary>
