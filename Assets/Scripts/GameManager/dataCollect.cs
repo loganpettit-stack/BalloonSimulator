@@ -72,6 +72,16 @@ public class BalloonData
     private float windSpeed;
     private float weightForce;
 
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="currentRadiusM"></param>
+    /// <param name="surfaceArea"></param>
+    /// <param name="volume"></param>
+    /// <param name="liftForce"></param>
+    /// <param name="mass"></param>
+    /// <param name="windSpeed"></param>
+    /// <param name="weightForce"></param>
     public BalloonData(float currentRadiusM, float surfaceArea, float volume, float liftForce, float mass, float windSpeed, float weightForce)
     {
         this.currentRadiusM = currentRadiusM;
@@ -95,6 +105,10 @@ public class BalloonData
     public float WindSpeed { get => windSpeed; }
     public float WeightForce { get => weightForce; }
 
+    /// <summary>
+    /// Returns data array for graphing purposes
+    /// </summary>
+    /// <returns></returns>
     public float[] GetDataArray()
     {
         return new float[] { currentRadiusM, surfaceArea, volume, liftForce, mass, windSpeed, weightForce };
