@@ -12,14 +12,20 @@ using System.Text;
 using System.IO;
 using System;
 
+
+
 public class CSVexport : MonoBehaviour
 {
 
     public dataCollect collect;
-    private string dirname = "Exports/CSV";
+    private string dirname;
+    public JSONconfig _configuration;
     
     private void Start()
     {
+
+        dirname = _configuration.loadedConfig.csvExportPath;
+
         /*Initial creation of CSV directory*/
         if(!Directory.Exists(dirname))
         {
