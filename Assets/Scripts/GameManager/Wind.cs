@@ -52,8 +52,8 @@ public class Wind : MonoBehaviour
         windSlider.maxValue = _configuration.loadedConfig.maxWindSpeed;
         windSlider.value = _configuration.loadedConfig.minWindSpeed;
 
-        string minString = windSlider.minValue.ToString() + " cm";
-        string maxString = windSlider.maxValue.ToString() + " cm";
+        string minString = windSlider.minValue.ToString() + " m/s";
+        string maxString = windSlider.maxValue.ToString() + " m/s";
 
         _textMin.text = minString;
         _textMax.text = maxString;
