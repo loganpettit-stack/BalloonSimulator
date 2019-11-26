@@ -164,10 +164,8 @@ public class Wind : MonoBehaviour
             constForce.force = new Vector2(constForce.force.x, forceY);
 
         //if its laying on the ground, but its inflated, push it up a bit.
-        if (balloon.transform.position.y < 1 && balloon.transform.localScale.x > 0.5f)
-        {
-            balloon.transform.position += (Vector3.up * Time.deltaTime);
-        }
+        if (balloon.transform.position.y < 1 && windSlider.value >  1f)
+           balloon.transform.position += (Vector3.up * Time.deltaTime);
 
         constForce.force = new Vector2(constForce.force.x, forceY * balloon.transform.localScale.x);
 
