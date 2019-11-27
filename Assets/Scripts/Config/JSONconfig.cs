@@ -146,8 +146,8 @@ public class Configuration
     public bool recordButton = true;
     public bool graph = true;
     public bool dataBox = true;
-    public string csvExportPath = "/Exports";
-    public string imageExportPath = "/Exports";
+    public string csvExportPath = "Exports";
+    public string imageExportPath = "Exports";
     public int minRadius = 50;
     public int maxRadius = 400;
     public int minWindSpeed = 0;
