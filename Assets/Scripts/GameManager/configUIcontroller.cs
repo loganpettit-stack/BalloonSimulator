@@ -51,7 +51,7 @@ public class configUIcontroller : MonoBehaviour
         inflateDeflatePanel = GameObject.Find("CPANEL_INFLATE_DEFLATE_BUTTON");
         exportBtn = GameObject.Find("BTN_EXPORT");
         recordBtn = GameObject.Find("BTN_RECORD");
-        magnifyBtn = GameObject.Find("BTN_MAGNIFY");
+        magnifyBtn = GameObject.Find("BTN_EXAMINE");
         graphPanel = GameObject.Find("CPANEL_BOTTOM_L");
         dataPanel = GameObject.Find("CPANEL_TOP_L");
         leftPanel = GameObject.Find("CPANEL_LEFT");

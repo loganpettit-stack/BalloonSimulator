@@ -30,14 +30,8 @@ public class _updateWeightValue : MonoBehaviour
     void Update()
     {
         force = Wind.WeightForce();
-
-        if(force > 0)
-        {
-            var test = val - (force/9.81f);
-            value.GetComponent<TextMeshProUGUI>().text = test.ToString("F0") + "kg";
-        }
-        
-
+        var test = force/9.81f;
+        value.GetComponent<TextMeshProUGUI>().text = test.ToString("F0") + " KG";
     }
 
 
