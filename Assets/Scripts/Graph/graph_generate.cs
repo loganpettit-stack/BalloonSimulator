@@ -36,7 +36,7 @@ public class graph_generate : MonoBehaviour
     private float BOUND_HEIGHT, //height bound and width bounds for display
         BOUND_WIDTH;
 
-    private string[] _scaleVals = { "m", "m²", "m³", "Nm", "kg", "m/s", "Nm" };
+    private string[] _scaleVals = { "m", "m²", "m³", "Nm", "kg", "m/s", "kg" };
 
     /// <summary>
     /// Performs bounds calculations for the display

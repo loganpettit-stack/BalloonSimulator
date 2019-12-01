@@ -26,7 +26,7 @@ public class dataCollect : MonoBehaviour
     {
         BalloonData balloonData = new BalloonData(uiValues._currentRadiusM,
             uiValues._surfaceArea, uiValues._volume, uiValues._liftForce, uiValues._mylar_mass,
-            Wind.constantStrength, Wind.WeightForce());
+            Wind.constantStrength, Wind.WeightForce() / 9.81f);
         balloonCollection.Add(balloonData);
     }
 
